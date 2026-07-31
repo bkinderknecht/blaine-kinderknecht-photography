@@ -1,8 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-<!-- Blaine Kinderknecht monogram (BK). Colors match the Cool Contrast theme
-     (THEMES.md #2) — update if the palette changes. -->
-<rect width="64" height="64" fill="#1B212C"/>
+<!-- Blaine Kinderknecht monogram (BK). Solid accent-blue chip (--baby-blue
+     in styles.css) on purpose, not the page background color — on a
+     light-theme site a near-white favicon would go invisible in a
+     browser tab, so this stays a bold branded mark either way. -->
+<rect width="64" height="64" fill="#1B5FA8"/>
 <text x="32" y="32" text-anchor="middle" dominant-baseline="central"
       font-family="Anton, 'Archivo Black', Impact, sans-serif"
-      font-size="30" letter-spacing="-1" fill="#EAF2F7">BK</text>
+      font-size="30" letter-spacing="-1" fill="#F2F5FA">BK</text>
 </svg>

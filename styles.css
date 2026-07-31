@@ -22,18 +22,29 @@
    ============================================================ */
 
 :root {
-  --umber: #10141C;
-  --umber-dark: #1B212C;
-  --umber-deeper: #080A0F;
-  --cream: #EAF2F7;
-  --ink: #EAF2F7;
-  --ink-soft: rgba(234, 242, 247, 0.72);
-  --cream-soft: rgba(234, 242, 247, 0.68);
+  /* Blaine's palette, not a THEMES.md preset: a light, cool-toned
+     background — inverted from Sawyer's dark warm charcoal, so this
+     reads as a different site at a glance, not just a different dark
+     mode — with a confident, saturated true-blue accent (distinct
+     from Sawyer's pale sky-blue --baby-blue: #A9D8E8) since Blaine
+     asked for blue as his color specifically. --umber/--umber-dark/
+     --umber-deeper go light-to-dark-of-the-light-family here (not
+     literal charcoal names); --cream/--ink carry the dark body text. */
+  --umber: #F2F5FA;
+  --umber-dark: #E3E9F2;
+  --umber-deeper: #D3DCE8;
+  --cream: #101826;
+  --ink: #101826;
+  --ink-soft: rgba(16, 24, 38, 0.72);
+  --cream-soft: rgba(16, 24, 38, 0.68);
   --paper: #F7F4EC;
   --paper-soft: rgba(247, 244, 236, 0.72);
-  --hairline: rgba(234, 242, 247, 0.14);
-  --baby-blue: #6FA8C9;
-  --baby-blue-light: #C9E4F0;
+  --hairline: rgba(16, 24, 38, 0.14);
+  /* Darker/more saturated than a mid blue would need to be on a dark
+     bg — this one has to carry white-ish button/nav text on top of it
+     at normal body-text sizes, not just act as a border accent. */
+  --baby-blue: #1B5FA8;
+  --baby-blue-light: #A9CBEA;
 
   --font-display: "Anton", "Archivo Black", Impact, sans-serif;
   --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
@@ -271,16 +282,16 @@ button {
   width: 42px;
   height: 42px;
   border-radius: 999px;
-  border: 1px solid rgba(247, 244, 236, 0.3);
+  border: 1px solid var(--hairline);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: border-color 0.2s ease, transform 0.2s ease;
-  color: var(--paper);
+  color: var(--cream);
 }
 
 .hero-socials a:hover {
-  border-color: var(--paper);
+  border-color: var(--cream);
   transform: translateY(-2px);
 }
 
@@ -290,7 +301,7 @@ button {
   font-size: 14px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--paper-soft);
+  color: var(--cream-soft);
   margin: 0 0 16px;
 }
 
@@ -300,23 +311,23 @@ button {
   line-height: 0.98;
   letter-spacing: 0.01em;
   margin: 0 0 20px;
-  color: var(--paper);
+  color: var(--cream);
 }
 
 .intro-sub {
   font-size: clamp(16px, 1.6vw, 19px);
   max-width: 420px;
   margin: 0 0 28px;
-  color: var(--paper-soft);
+  color: var(--cream-soft);
 }
 
-/* .hero-content sits on .hero-bg::after's always-dark scrim (see
-   comment above .hero-bg::after) regardless of theme, so its .btn
-   needs the theme-independent --paper treatment too, not the normal
-   themed .btn colors used everywhere else on the site. */
+/* .hero-content sits on its own solid --umber panel (see .hero-content
+   above), not on the photo scrim, so its .btn uses the theme's own
+   --cream on --umber pairing — same as every other themed .btn on the
+   site — not the theme-independent --paper treatment. */
 .hero-content .btn {
-  border-color: var(--paper);
-  color: var(--paper);
+  border-color: var(--cream);
+  color: var(--cream);
 }
 
 .hero-content .btn:hover {
