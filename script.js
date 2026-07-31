@@ -889,6 +889,41 @@ function wireContactForm(root) {
   });
 }
 
+// Homepage-only: the arrow-paged "browse by category" row between
+// Select Works and the About teaser. Reuses renderTileGrid (the same
+// function that builds gallery.html's own category picker) against
+// content/taxonomy.json's Sports branch, so adding/renaming a sport
+// there is the only edit needed — nothing hardcoded here. The arrow
+// buttons just scroll the row by one tile's width; native
+// drag/trackpad scrolling works regardless since it's a real
+// overflow-x container underneath.
+async function renderHomeCategoryCarousel(root, photos) {
+  const container = root.querySelector('#home-category-carousel');
+  if (!container) return;
+  let taxonomy;
+  try {
+    taxonomy = await fetchJson('content/taxonomy.json');
+  } catch (err) {
+    console.error('[site] category carousel failed to load taxonomy:', err);
+    return;
+  }
+  const sportsNode = (taxonomy.tiles || []).find((t) => t.slug === 'sports');
+  if (!sportsNode || !sportsNode.children || !sportsNode.children.length) return;
+  renderTileGrid(container, sportsNode.children, photos);
+
+  const wrap = container.closest('.category-carousel-wrap');
+  if (!wrap) return;
+  const prevBtn = wrap.querySelector('.carousel-arrow-prev');
+  const nextBtn = wrap.querySelector('.carousel-arrow-next');
+  const scrollByTile = (dir) => {
+    const tile = container.querySelector('.category-tile, .placeholder-tile');
+    const amount = tile ? tile.getBoundingClientRect().width + 12 : 260;
+    container.scrollBy({ left: dir * amount, behavior: 'smooth' });
+  };
+  if (prevBtn) prevBtn.addEventListener('click', () => scrollByTile(-1));
+  if (nextBtn) nextBtn.addEventListener('click', () => scrollByTile(1));
+}
+
 async function initPage() {
   const root = document;
   wireNavToggle(root);
@@ -900,12 +935,13 @@ async function initPage() {
   const bentoContainer = root.querySelector('.bento-grid');
   const favoritesContainer = root.querySelector('.favorites-grid');
   const heroBgContainer = root.querySelector('#hero-bg-container');
+  const categoryCarouselContainer = root.querySelector('#home-category-carousel');
 
   // Fetched early (and ahead of settings) whenever anything on this
   // page needs it — renderHeroImages uses it to look up each hero
   // photo's focus point, so settings can't render before this exists.
   let photos = [];
-  if (bentoContainer || favoritesContainer || heroBgContainer) {
+  if (bentoContainer || favoritesContainer || heroBgContainer || categoryCarouselContainer) {
     try {
       const photoData = await fetchJson('assets/photos/meta.json');
       photos = Array.isArray(photoData) ? photoData : (photoData.photos || []);
@@ -925,6 +961,7 @@ async function initPage() {
 
   if (bentoContainer) renderBento(bentoContainer, photos);
   if (favoritesContainer) renderFavorites(favoritesContainer, photos);
+  if (categoryCarouselContainer) await renderHomeCategoryCarousel(root, photos);
 
   // gallery.html's tree of categories (Sports > High School > Football,
   // etc.) — see initGalleryTree above. No-ops on any page that doesn't

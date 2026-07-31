@@ -1,1 +1,76 @@
-{"photos": []}
+{
+  "photos": [
+    {
+      "slug": "placeholder-fav-1",
+      "category": "football",
+      "caption": "Placeholder — swap for a real photo",
+      "bentoSlot": "a"
+    },
+    {
+      "slug": "placeholder-fav-2",
+      "category": "wrestling",
+      "caption": "Placeholder — swap for a real photo",
+      "bentoSlot": "b"
+    },
+    {
+      "slug": "placeholder-fav-3",
+      "category": "track",
+      "caption": "Placeholder — swap for a real photo",
+      "bentoSlot": "c"
+    },
+    {
+      "slug": "placeholder-gallery-1",
+      "category": "football",
+      "caption": "Placeholder — swap for a real photo",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "placeholder-gallery-2",
+      "category": "football",
+      "caption": "Placeholder — swap for a real photo",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "placeholder-gallery-3",
+      "category": "football",
+      "caption": "Placeholder — swap for a real photo",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "placeholder-gallery-4",
+      "category": "football",
+      "caption": "Placeholder — swap for a real photo",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "placeholder-basketball",
+      "category": "basketball",
+      "caption": "Placeholder — swap for a real photo",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "placeholder-baseball",
+      "category": "baseball",
+      "caption": "Placeholder — swap for a real photo",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "placeholder-volleyball",
+      "category": "volleyball",
+      "caption": "Placeholder — swap for a real photo",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "placeholder-soccer",
+      "category": "soccer",
+      "caption": "Placeholder — swap for a real photo",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "placeholder-crowd",
+      "category": "crowd",
+      "caption": "Placeholder — swap for a real photo",
+      "bentoSlot": ""
+    }
+  ]
+}

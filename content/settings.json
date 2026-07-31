@@ -6,5 +6,5 @@
   "contactPhoneHref": "",
   "footerText": "© 2026 Blaine Kinderknecht Photography",
   "sheetsWebhookUrl": "",
-  "heroImages": []
+  "heroImages": ["assets/photos/placeholder-hero-1.jpg", "assets/photos/placeholder-hero-2.jpg"]
 }

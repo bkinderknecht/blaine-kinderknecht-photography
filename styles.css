@@ -45,6 +45,16 @@
      at normal body-text sizes, not just act as a border accent. */
   --baby-blue: #1B5FA8;
   --baby-blue-light: #A9CBEA;
+  /* A small tonal range around the main accent, added because the
+     placeholder photos (a spread of blues from deep navy to steel)
+     read as more "complex"/richer than the site chrome did next to
+     them — this gives the permanent UI (nav, promo bands, tile
+     borders, hover states) the same tonal variety instead of one
+     flat blue reused everywhere. --baby-blue stays the single color
+     used for anything that must stay maximally legible (main CTA
+     buttons, links) — these two are for texture/variety elsewhere. */
+  --accent-deep: #143A63;
+  --accent-soft: #5B87B8;
 
   --font-display: "Anton", "Archivo Black", Impact, sans-serif;
   --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
@@ -111,6 +121,7 @@ button {
   font-family: var(--font-display);
   font-size: 24px;
   letter-spacing: 0.04em;
+  word-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--cream);
   border-bottom: 2px solid var(--baby-blue);
@@ -193,27 +204,35 @@ button {
 }
 
 /* ---------- Hero ----------
-   Split-screen, not full-bleed: a solid dark text panel on the left,
-   a photo panel on the right. Deliberately not Sawyer's centered
-   text-over-photo hero — this reads as a distinct composition even
-   before real photos or copy are in. Images still come from
-   content/settings.json (heroImages) via #hero-bg-container; only
-   the layout around them changed, not how script.js fills them in. */
+   Reworked after looking at Squarespace's "McCurry" template for
+   inspiration: an oversized display-type headline as its own block
+   (no photo behind it — type carries the impact), then a full-bleed
+   photo band directly below, stacked rather than side-by-side or
+   overlaid. Images still come from content/settings.json
+   (heroImages) via #hero-bg-container; only the layout changed, not
+   how script.js fills them in. */
 
 .hero {
-  position: relative;
-  overflow: hidden;
-  min-height: min(92vh, 820px);
-  display: grid;
-  grid-template-columns: minmax(340px, 44%) 1fr;
   padding-top: var(--nav-height);
+}
+
+.hero-content {
+  text-align: left;
+  max-width: 900px;
+  padding: 72px var(--edge) 56px;
+}
+
+.hero-socials {
+  display: flex;
+  justify-content: flex-start;
+  gap: 14px;
+  margin-bottom: 28px;
 }
 
 .hero-bg {
   position: relative;
-  grid-column: 2;
   display: flex;
-  z-index: 0;
+  height: min(62vh, 640px);
   background: var(--umber-dark);
 }
 
@@ -226,56 +245,9 @@ button {
   object-fit: cover;
 }
 
-.hero-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(16,20,28,0.55) 0%, rgba(16,20,28,0) 18%), linear-gradient(180deg, rgba(16,20,28,0) 70%, rgba(16,20,28,0.6) 100%);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  grid-column: 1;
-  text-align: left;
-  max-width: 460px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 48px var(--edge);
-  background: var(--umber);
-  border-right: 1px solid var(--hairline);
-}
-
-.hero-socials {
-  display: flex;
-  justify-content: flex-start;
-  gap: 14px;
-  margin-bottom: 28px;
-}
-
-@media (max-width: 860px) {
-  .hero {
-    grid-template-columns: 1fr;
-    grid-template-rows: min(48vh, 420px) auto;
-    min-height: 0;
-  }
-
-  .hero-bg {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .hero-content {
-    grid-column: 1;
-    grid-row: 2;
-    max-width: none;
-    border-right: none;
-    border-bottom: 1px solid var(--hairline);
-    align-items: flex-start;
-    padding: 40px var(--edge);
-  }
+@media (max-width: 760px) {
+  .hero-content { padding: 56px var(--edge) 40px; }
+  .hero-bg { height: min(42vh, 420px); }
 }
 
 .hero-socials a {
@@ -306,17 +278,26 @@ button {
 }
 
 .intro-title {
+  /* Oversized on purpose — the McCurry reference leads with type at
+     dramatic scale instead of a photo, so this is the site's visual
+     centerpiece, not just a headline. Letter-spacing bumped up from
+     near-zero — Anton is a very tightly-set condensed font, and at
+     this size near-zero tracking let some letter pairs visually
+     touch. */
   font-family: var(--font-display);
-  font-size: clamp(36px, 5vw, 60px);
-  line-height: 0.98;
-  letter-spacing: 0.01em;
-  margin: 0 0 20px;
+  font-size: clamp(48px, 11vw, 148px);
+  /* Was 0.92 — tight enough that when the name wraps to two lines
+     ("Blaine" / "Kinderknecht"), the second line's ascenders/dots
+     collided with the first line's descenders. */
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  margin: 0 0 24px;
   color: var(--cream);
 }
 
 .intro-sub {
   font-size: clamp(16px, 1.6vw, 19px);
-  max-width: 420px;
+  max-width: 560px;
   margin: 0 0 28px;
   color: var(--cream-soft);
 }
@@ -502,7 +483,7 @@ section {
   margin: 0 var(--edge);
   padding: 64px var(--edge);
   border-radius: 2px;
-  background: var(--baby-blue);
+  background: linear-gradient(135deg, var(--accent-deep), var(--baby-blue));
   color: var(--umber);
   text-align: center;
 }
@@ -566,7 +547,7 @@ section {
 }
 
 .category-tile.is-active {
-  box-shadow: 0 0 0 3px var(--baby-blue) inset;
+  box-shadow: 0 0 0 3px var(--accent-soft) inset;
 }
 
 .category-tile img {
@@ -611,52 +592,101 @@ section {
 }
 
 /* ---------- Recent favorites (homepage) ----------
-   A small, simple grid — deliberately not the elaborate bento
-   mosaic — pulled from whichever photos are marked as a "Featured
-   tile" in the admin editor (the same bentoSlot field used to power
-   the old homepage grid). This is Sawyer's highlight reel, not the
-   whole gallery. */
+   Pulled from whichever photos are marked as a "Featured tile" in
+   the admin editor (the same bentoSlot field used to power the old
+   homepage grid). Reworked after Squarespace's "McCurry" template
+   ("Select Works" section) for inspiration: 3 columns instead of 4,
+   and a plain caption sitting below each photo instead of a
+   hover-only overlay — reads as a real "select works" index rather
+   than a hover-to-discover mosaic. */
 
 .favorites-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
 .favorite-item {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  display: block;
-  background: var(--umber-dark);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .favorite-item img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
+  background: var(--umber-dark);
   transition: transform 0.5s ease;
 }
 
-.favorite-item:hover img { transform: scale(1.05); }
+.favorite-item:hover img { transform: scale(1.03); }
 
 .favorite-item .cap {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  padding: 12px;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--paper);
-  background: linear-gradient(to top, rgba(20,18,15,0.65), transparent);
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  font-size: 17px;
+  color: var(--cream-soft);
 }
-
-.favorite-item:hover .cap { opacity: 1; }
 
 @media (max-width: 760px) {
   .favorites-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Category carousel (homepage) ----------
+   Same .category-tile/.placeholder-tile markup as gallery.html's own
+   category picker (both come from renderTileGrid in script.js), just
+   laid out as a horizontally scrolling, arrow-paged row instead of a
+   grid — so this rule set only overrides layout (width, scroll
+   behavior), not the tile's own look. */
+
+.category-carousel-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.category-carousel {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  flex: 1 1 auto;
+  /* Hide the scrollbar — the arrow buttons are the intended way to
+     page through, dragging/trackpad-scrolling still works either way. */
+  scrollbar-width: none;
+}
+
+.category-carousel::-webkit-scrollbar { display: none; }
+
+.category-carousel .category-tile,
+.category-carousel .placeholder-tile {
+  flex: 0 0 clamp(300px, 34vw, 420px);
+  aspect-ratio: 3 / 4;
+  scroll-snap-align: start;
+}
+
+.carousel-arrow {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--hairline);
+  background: none;
+  color: var(--cream);
+  font-size: 18px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.carousel-arrow:hover {
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+  color: var(--paper);
+}
+
+@media (max-width: 600px) {
+  .carousel-arrow { display: none; }
 }
 
 /* ---------- Gallery tree (gallery.html) ----------
@@ -945,7 +975,7 @@ a.placeholder-tile:hover .tile-label { color: var(--cream); }
 
 .about-copy {
   padding: 48px calc(var(--edge) + 8px) 48px 56px;
-  border-left: 3px solid var(--baby-blue);
+  border-left: 3px solid var(--accent-deep);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -964,7 +994,7 @@ a.placeholder-tile:hover .tile-label { color: var(--cream); }
   .about-copy {
     padding: 32px 0 0;
     border-left: none;
-    border-top: 3px solid var(--baby-blue);
+    border-top: 3px solid var(--accent-deep);
     margin-top: 32px;
   }
 }
@@ -1179,10 +1209,10 @@ html.is-admin [data-reveal]:not(.is-in) {
   transition: color 0.3s ease;
 }
 
-.cm-item:hover { color: var(--baby-blue); }
+.cm-item:hover { color: var(--accent-deep); }
 
 .cm-sep {
-  color: var(--baby-blue);
+  color: var(--accent-soft);
   font-size: 11px;
   transform: translateY(-2px);
 }

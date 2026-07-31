@@ -69,23 +69,21 @@
   <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
   <ul class="nav-links">
     <li><a href="index.html" aria-current="page">Home</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="gallery.html">Work</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html" class="nav-book">Book</a></li>
   </ul>
 </nav>
 
-<!-- Hero background: 1-3 large photos behind the headline, dimmed by
-     a charcoal scrim so the type stays readable. Images come from
-     content/settings.json's "heroImages" (see script.js's
-     renderHeroImages) so swapping them — or changing how many there
-     are — is a content edit, not an HTML edit. The two <img> tags
-     here are just a fallback in case that JSON fails to load. -->
+<!-- Hero, reworked after looking at Squarespace's "McCurry" template for
+     inspiration: oversized display-type headline first (the visual
+     centerpiece, no photo behind it), then a full-bleed photo band
+     directly below — stacked, not the earlier side-by-side split.
+     Images still come from content/settings.json's "heroImages" via
+     #hero-bg-container (see script.js's renderHeroImages); only the
+     layout around them changed. The two <img> tags are a fallback in
+     case that JSON fails to load. -->
 <div class="hero">
-  <div class="hero-bg" id="hero-bg-container" aria-hidden="true">
-    <img src="assets/photos/REPLACE-WITH-A-REAL-PHOTO.jpg" alt="">
-    <img src="assets/photos/REPLACE-WITH-A-REAL-PHOTO.jpg" alt="">
-  </div>
   <div class="hero-content">
     <nav class="hero-socials" aria-label="Social">
       <a id="hero-instagram" href="https://www.instagram.com/_bkinderknecht/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -96,9 +94,13 @@
       </a>
     </nav>
     <p id="hero-eyebrow" class="intro-eyebrow">[City] &amp; beyond</p>
-    <h1 id="hero-title" class="intro-title">[Hero headline]</h1>
+    <h1 id="hero-title" class="intro-title">Blaine Kinderknecht</h1>
     <p id="hero-sub" class="intro-sub">[One or two sentences on shooting style/philosophy]</p>
     <a href="contact.html" class="btn">Book</a>
+  </div>
+  <div class="hero-bg" id="hero-bg-container" aria-hidden="true">
+    <img src="assets/photos/placeholder-hero-1.jpg" alt="">
+    <img src="assets/photos/placeholder-hero-2.jpg" alt="">
   </div>
 </div>
 
@@ -116,7 +118,9 @@
 <!-- Recent favorites: a small highlight reel, not the full gallery —
      pulled from whichever photos are marked as a "Featured tile" in
      the /admin editor (assets/photos/meta.json's bentoSlot field).
-     Filled in at load time by script.js. -->
+     Filled in at load time by script.js. Header row + static
+     below-image captions reworked after Squarespace's "McCurry"
+     template ("Select Works" section) for inspiration. -->
 <section>
   <div class="section-head">
     <div>
@@ -124,9 +128,31 @@
       <h2 id="favorites-title" class="section-title">[Favorites headline].</h2>
       <p id="favorites-copy" class="section-copy">The shots that made the cut — swapped out the moment something better comes off a card.</p>
     </div>
+    <a href="gallery.html" class="text-link">View Work &rarr;</a>
   </div>
 
   <div class="favorites-grid"></div>
+</section>
+
+<!-- Category carousel: browse by sport, arrow-navigable. Driven by
+     content/taxonomy.json's Sports branch — same tile markup as
+     gallery.html's own category picker (renderTileGrid in script.js),
+     just laid out as a horizontally scrolling row instead of a grid.
+     Each tile links straight into gallery.html's filtered view for
+     that category (?path=sports/<slug>). Requested after looking at
+     the arrow-paged tile row on Squarespace's "McCurry" demo. -->
+<section class="category-carousel-section">
+  <div class="section-head">
+    <div>
+      <p class="section-kicker">Browse by category</p>
+      <h2 class="section-title">What I shoot.</h2>
+    </div>
+  </div>
+  <div class="category-carousel-wrap">
+    <button type="button" class="carousel-arrow carousel-arrow-prev" aria-label="Previous category">&larr;</button>
+    <div class="category-carousel" id="home-category-carousel"></div>
+    <button type="button" class="carousel-arrow carousel-arrow-next" aria-label="Next category">&rarr;</button>
+  </div>
 </section>
 
 <div class="promo-band">
@@ -153,7 +179,7 @@
   <a href="contact.html">Book a shoot &rarr;</a>
 </footer>
 
-<script src="script.js?v=6"></script>
+<script src="script.js?v=7"></script>
 <script src="admin-loader.js?v=2"></script>
 </body>
 </html>
