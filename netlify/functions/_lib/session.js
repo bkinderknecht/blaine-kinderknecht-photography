@@ -9,7 +9,7 @@
 
 const crypto = require('crypto');
 
-const SESSION_COOKIE_NAME = 'sawyer_admin_session';
+const SESSION_COOKIE_NAME = 'admin_session';
 const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 30; // 30 days
 
 // --- Password hashing ---

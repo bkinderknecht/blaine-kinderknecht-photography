@@ -7,7 +7,7 @@ on the website show up as a new row in a Google Sheet automatically.
 
 1. Go to [sheets.google.com](https://sheets.google.com) and create a new,
    blank spreadsheet.
-2. Name it something like "Pics by Peralta — Bookings."
+2. Name it something like "Blaine Kinderknecht — Bookings."
 
 ## 2. Add the script
 

@@ -6,169 +6,52 @@
       "label": "Sports",
       "children": [
         {
-          "slug": "professional",
-          "label": "Professional",
-          "children": [
-            {
-              "slug": "football",
-              "label": "Football",
-              "category": "professional-football",
-              "path": "sports/professional/football"
-            },
-            {
-              "slug": "basketball",
-              "label": "Basketball",
-              "category": "professional-basketball",
-              "path": "sports/professional/basketball"
-            },
-            {
-              "slug": "track",
-              "label": "Track",
-              "category": "professional-track",
-              "path": "sports/professional/track"
-            },
-            {
-              "slug": "baseball",
-              "label": "Baseball",
-              "category": "professional-baseball",
-              "path": "sports/professional/baseball"
-            },
-            {
-              "slug": "wrestling",
-              "label": "Wrestling",
-              "category": "professional-wrestling",
-              "path": "sports/professional/wrestling"
-            },
-            {
-              "slug": "volleyball",
-              "label": "Volleyball",
-              "category": "professional-volleyball",
-              "path": "sports/professional/volleyball"
-            },
-            {
-              "slug": "soccer",
-              "label": "Soccer",
-              "category": "professional-soccer",
-              "path": "sports/professional/soccer"
-            },
-            {
-              "slug": "crowd",
-              "label": "Crowd",
-              "category": "professional-crowd",
-              "path": "sports/professional/crowd"
-            }
-          ],
-          "path": "sports/professional"
+          "slug": "football",
+          "label": "Football",
+          "category": "football",
+          "path": "sports/football"
         },
         {
-          "slug": "college",
-          "label": "College",
-          "children": [
-            {
-              "slug": "football",
-              "label": "Football",
-              "category": "college-football",
-              "path": "sports/college/football"
-            },
-            {
-              "slug": "basketball",
-              "label": "Basketball",
-              "category": "college-basketball",
-              "path": "sports/college/basketball"
-            },
-            {
-              "slug": "track",
-              "label": "Track",
-              "category": "college-track",
-              "path": "sports/college/track"
-            },
-            {
-              "slug": "baseball",
-              "label": "Baseball",
-              "category": "college-baseball",
-              "path": "sports/college/baseball"
-            },
-            {
-              "slug": "wrestling",
-              "label": "Wrestling",
-              "category": "college-wrestling",
-              "path": "sports/college/wrestling"
-            },
-            {
-              "slug": "volleyball",
-              "label": "Volleyball",
-              "category": "college-volleyball",
-              "path": "sports/college/volleyball"
-            },
-            {
-              "slug": "soccer",
-              "label": "Soccer",
-              "category": "college-soccer",
-              "path": "sports/college/soccer"
-            },
-            {
-              "slug": "crowd",
-              "label": "Crowd",
-              "category": "college-crowd",
-              "path": "sports/college/crowd"
-            }
-          ],
-          "path": "sports/college"
+          "slug": "basketball",
+          "label": "Basketball",
+          "category": "basketball",
+          "path": "sports/basketball"
         },
         {
-          "slug": "highschool",
-          "label": "High School",
-          "children": [
-            {
-              "slug": "football",
-              "label": "Football",
-              "category": "football",
-              "path": "sports/highschool/football"
-            },
-            {
-              "slug": "basketball",
-              "label": "Basketball",
-              "category": "basketball",
-              "path": "sports/highschool/basketball"
-            },
-            {
-              "slug": "track",
-              "label": "Track",
-              "category": "track",
-              "path": "sports/highschool/track"
-            },
-            {
-              "slug": "baseball",
-              "label": "Baseball",
-              "category": "baseball",
-              "path": "sports/highschool/baseball"
-            },
-            {
-              "slug": "wrestling",
-              "label": "Wrestling",
-              "category": "wrestling",
-              "path": "sports/highschool/wrestling"
-            },
-            {
-              "slug": "volleyball",
-              "label": "Volleyball",
-              "category": "volleyball",
-              "path": "sports/highschool/volleyball"
-            },
-            {
-              "slug": "soccer",
-              "label": "Soccer",
-              "category": "soccer",
-              "path": "sports/highschool/soccer"
-            },
-            {
-              "slug": "crowd",
-              "label": "Crowd",
-              "category": "crowd",
-              "path": "sports/highschool/crowd"
-            }
-          ],
-          "path": "sports/highschool"
+          "slug": "track",
+          "label": "Track",
+          "category": "track",
+          "path": "sports/track"
+        },
+        {
+          "slug": "baseball",
+          "label": "Baseball",
+          "category": "baseball",
+          "path": "sports/baseball"
+        },
+        {
+          "slug": "wrestling",
+          "label": "Wrestling",
+          "category": "wrestling",
+          "path": "sports/wrestling"
+        },
+        {
+          "slug": "volleyball",
+          "label": "Volleyball",
+          "category": "volleyball",
+          "path": "sports/volleyball"
+        },
+        {
+          "slug": "soccer",
+          "label": "Soccer",
+          "category": "soccer",
+          "path": "sports/soccer"
+        },
+        {
+          "slug": "crowd",
+          "label": "Crowd",
+          "category": "crowd",
+          "path": "sports/crowd"
         }
       ],
       "path": "sports"
@@ -192,9 +75,8 @@
         {
           "slug": "nature",
           "label": "Nature",
-          "category": "nature",
-          "path": "beyond-the-action/nature",
-          "coverSlug": "nature-cow-portrait"
+          "placeholder": true,
+          "path": "beyond-the-action/nature"
         },
         {
           "slug": "cars",

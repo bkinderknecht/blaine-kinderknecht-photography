@@ -1,5 +1,5 @@
 /**
- * Pics by Peralta — contact form to Google Sheet
+ * Blaine Kinderknecht — contact form to Google Sheet
  * ============================================================
  * Paste this whole file into the Apps Script editor attached to a
  * Google Sheet (Extensions > Apps Script). Full setup steps are in
