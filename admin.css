@@ -1,0 +1,471 @@
+/* Admin edit-mode styles — only ever loaded when logged in (see
+   admin-loader.js). Reuses the site's existing CSS variables so it
+   matches the public design; baby blue (already used for the promo
+   bands elsewhere on the site) marks anything admin-only, so it's
+   visually obvious what's "real site" vs "editing chrome." */
+
+.admin-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--umber);
+  border: 1px solid var(--baby-blue);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  max-width: calc(100vw - 32px);
+}
+
+.admin-bar-label {
+  color: var(--baby-blue);
+  text-transform: uppercase;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.admin-bar-status {
+  color: var(--cream-soft);
+  min-width: 60px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.admin-bar-status.is-ok { color: var(--baby-blue); }
+.admin-bar-status.is-error { color: #E8877A; }
+
+.admin-bar button {
+  border: 1px solid var(--cream-soft);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--cream);
+  cursor: pointer;
+  background: transparent;
+  white-space: nowrap;
+}
+.admin-bar button:hover { border-color: var(--cream); }
+
+.admin-bar-select.is-active {
+  background: var(--baby-blue);
+  color: var(--umber);
+  border-color: var(--baby-blue);
+}
+
+.admin-select-count {
+  color: var(--baby-blue);
+  white-space: nowrap;
+}
+
+.admin-select-delete {
+  border-color: #E8877A !important;
+  color: #E8877A !important;
+}
+.admin-select-delete:disabled { opacity: 0.4; cursor: default; }
+
+/* Photo tiles get a hover/tap overlay in edit mode — the tile's own
+   normal click behavior (navigate / open lightbox) is suppressed
+   while logged in; clicking anywhere on it opens the edit panel
+   instead. A small delete button sits above that overlay so it's
+   still reachable as its own target. */
+
+.admin-tile-wrap { position: relative; }
+
+.admin-tile-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  cursor: pointer;
+  background: rgba(28, 27, 24, 0);
+  transition: background 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.admin-tile-overlay:hover { background: rgba(28, 27, 24, 0.45); }
+
+.admin-tile-edit-badge {
+  background: var(--baby-blue);
+  color: var(--umber);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 5px 12px;
+  border-radius: 999px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+.admin-tile-overlay:hover .admin-tile-edit-badge { opacity: 1; }
+
+.admin-tile-delete {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 6;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(28, 27, 24, 0.9);
+  color: #E8877A;
+  border: 1px solid #E8877A;
+  font-size: 15px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.admin-drag-handle {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  z-index: 6;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background: rgba(28, 27, 24, 0.9);
+  color: var(--cream);
+  border: 1px solid var(--cream-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  font-size: 15px;
+}
+
+.gallery-item.admin-dragging,
+.bento-item.admin-dragging,
+.favorite-item.admin-dragging {
+  opacity: 0.4;
+}
+
+.gallery-item.is-selected,
+.bento-item.is-selected,
+.favorite-item.is-selected {
+  outline: 3px solid var(--baby-blue);
+  outline-offset: -3px;
+}
+.gallery-item.is-selected .admin-tile-overlay,
+.bento-item.is-selected .admin-tile-overlay,
+.favorite-item.is-selected .admin-tile-overlay {
+  background: rgba(169, 216, 232, 0.35);
+}
+
+.admin-add-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 84px;
+  z-index: 500;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border-radius: 999px;
+  background: var(--baby-blue);
+  color: var(--umber);
+  font-size: 30px;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modals — shared shell for "edit/add photo" and "site settings" */
+
+.admin-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  background: rgba(20, 18, 15, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.admin-modal {
+  width: 100%;
+  max-width: 440px;
+  max-height: 88vh;
+  overflow-y: auto;
+  background: var(--umber);
+  border: 1px solid var(--baby-blue);
+  border-radius: 4px;
+  padding: 28px;
+}
+
+.admin-modal h2 {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 24px;
+  margin: 0 0 20px;
+}
+
+.admin-modal label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream-soft);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.admin-modal input[type="text"],
+.admin-modal input[type="email"],
+.admin-modal input[type="tel"],
+.admin-modal input[type="url"],
+.admin-modal input[type="file"],
+.admin-modal select,
+.admin-modal textarea {
+  width: 100%;
+  background: var(--umber-dark);
+  border: 1px solid var(--hairline);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 9px 10px;
+  border-radius: 2px;
+  margin-bottom: 14px;
+  box-sizing: border-box;
+}
+
+.admin-modal textarea { min-height: 70px; resize: vertical; }
+
+/* Drag-to-reposition crop preview — renders the photo exactly the way
+   object-fit:cover will show it wherever it's used, so what you see
+   here is the real crop, not an approximation. */
+
+.admin-focus-box {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 2px;
+  border: 1px solid var(--hairline);
+  cursor: move;
+  touch-action: none;
+  background: var(--umber-dark);
+  margin-bottom: 8px;
+}
+.admin-focus-box.ratio-standard { aspect-ratio: 3 / 2; }
+.admin-focus-box.ratio-wide { aspect-ratio: 2.4 / 1; }
+.admin-focus-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.admin-hero-framing {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+.admin-hero-framing-item { margin-bottom: 10px; }
+.admin-hero-framing-item .admin-hint { margin-bottom: 6px; }
+
+.admin-modal .admin-modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.admin-modal .admin-modal-actions button { flex: 1; }
+
+.admin-modal .admin-error {
+  color: #E8877A;
+  font-size: 13px;
+  min-height: 1.2em;
+  margin: 0 0 10px;
+}
+
+.admin-modal .admin-hint {
+  color: var(--cream-soft);
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+
+.admin-section-delete {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 6;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(28, 27, 24, 0.9);
+  color: #E8877A;
+  border: 1px solid #E8877A;
+  font-size: 15px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.admin-tile-cover-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 6;
+  background: rgba(28, 27, 24, 0.85);
+  color: var(--baby-blue);
+  border: 1px solid var(--baby-blue);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+/* Category hero "cover photo" button + picker (gallery.html leaf pages) */
+
+.admin-cover-edit-btn {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 5;
+  background: var(--baby-blue);
+  color: var(--umber);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.admin-cover-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  max-height: 320px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+
+.admin-cover-picker-grid button {
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  background: none;
+  aspect-ratio: 1;
+}
+.admin-cover-picker-grid button.is-selected { border-color: var(--baby-blue); }
+.admin-cover-picker-grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Booking page "service option" pills — add/remove/rename */
+
+.admin-pill-delete {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  z-index: 6;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: rgba(28, 27, 24, 0.9);
+  color: #E8877A;
+  border: 1px solid #E8877A;
+  font-size: 12px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.admin-pill-add {
+  display: inline-block;
+  margin-top: 10px;
+  background: transparent;
+  border: 1px dashed var(--baby-blue);
+  color: var(--baby-blue);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+/* Batch photo upload — a scrollable list of thumbnail + caption/category
+   rows, one per selected file, inside the shared modal shell. */
+
+.admin-batch-modal { max-width: 520px; }
+
+.admin-batch-list {
+  max-height: 50vh;
+  overflow-y: auto;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-batch-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+}
+
+.admin-batch-thumb {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.admin-batch-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.admin-batch-fields input,
+.admin-batch-fields select {
+  margin-bottom: 0 !important;
+}
+
+/* Inline contenteditable text sections (About page heading/bio) */
+
+.admin-editable {
+  outline: 1px dashed var(--baby-blue);
+  outline-offset: 6px;
+  cursor: text;
+  border-radius: 2px;
+}
+.admin-editable:focus { outline-style: solid; }
+
+.admin-inline-save {
+  display: inline-flex;
+  margin-top: 14px;
+}

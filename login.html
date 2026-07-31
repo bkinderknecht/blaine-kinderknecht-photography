@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Login</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Not linked from anywhere on the public site on purpose — bookmark
+     this page directly. Reuses styles.css's variables/fonts so it
+     still feels like part of the site, without needing its own theme. */
+  .login-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--edge);
+  }
+  .login-card { width: 100%; max-width: 360px; }
+  .login-card h1 {
+    font-family: var(--font-display);
+    font-size: 36px;
+    margin: 0 0 28px;
+    text-transform: uppercase;
+  }
+  .login-card form { display: flex; flex-direction: column; gap: 18px; }
+  .login-card label {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cream-soft);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .login-card input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--cream-soft);
+    color: var(--cream);
+    font-family: var(--font-body);
+    font-size: 17px;
+    padding: 10px 2px;
+  }
+  .login-card input:focus { outline: none; border-bottom-color: var(--cream); }
+  .login-card .error { color: #E8877A; font-size: 14px; min-height: 1.4em; margin: 0; }
+</style>
+</head>
+<body>
+<div class="login-wrap">
+  <div class="login-card">
+    <h1>Site Login</h1>
+    <form id="login-form">
+      <div>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" required>
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <p class="error" id="login-error"></p>
+      <button type="submit" class="btn">Log in</button>
+    </form>
+  </div>
+</div>
+<script>
+  document.getElementById('login-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errorEl = document.getElementById('login-error');
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    errorEl.textContent = '';
+    submitBtn.disabled = true;
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'login',
+          username: document.getElementById('username').value,
+          password: document.getElementById('password').value,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        errorEl.textContent = data.error || 'Login failed.';
+        submitBtn.disabled = false;
+        return;
+      }
+      window.location.href = 'index.html';
+    } catch (err) {
+      errorEl.textContent = 'Something went wrong. Check your connection and try again.';
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

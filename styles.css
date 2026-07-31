@@ -1,0 +1,1221 @@
+/* ============================================================
+   Sawyer Peralta — Photography
+   Canvas color: charcoal, with sail-colored lettering (inverted
+   from the original light version — same two tones, dark now
+   carries the background and light carries the type). One
+   background, nothing competing with it: no accent color, type
+   stays quiet, photos carry the energy.
+
+   Structural layout is modeled on colevisuals.co (centered hero
+   with social row + CTA, a distinct "browse by category" section
+   that hands off to a separate gallery page instead of embedding
+   the full grid on the homepage, a promo band, a book-now band) —
+   but the visual language (color, type) is Sawyer's own, not
+   copied from that site.
+
+   --umber/--umber-dark/--umber-deeper/--cream/--cream-soft names
+   are kept as-is on purpose — read them as charcoal/charcoal-
+   elevated/charcoal-deepest/sail/sail-soft. --paper is light text
+   for spots that sit on a dark photo scrim (captions, lightbox)
+   regardless of the overall theme — those scrims are about photo
+   legibility, not page theme, so they don't invert.
+   ============================================================ */
+
+:root {
+  --umber: #10141C;
+  --umber-dark: #1B212C;
+  --umber-deeper: #080A0F;
+  --cream: #EAF2F7;
+  --ink: #EAF2F7;
+  --ink-soft: rgba(234, 242, 247, 0.72);
+  --cream-soft: rgba(234, 242, 247, 0.68);
+  --paper: #F7F4EC;
+  --paper-soft: rgba(247, 244, 236, 0.72);
+  --hairline: rgba(234, 242, 247, 0.14);
+  --baby-blue: #6FA8C9;
+  --baby-blue-light: #C9E4F0;
+
+  --font-display: "Anton", "Archivo Black", Impact, sans-serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  --nav-height: 76px;
+  --edge: clamp(20px, 5vw, 64px);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--umber);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Nav ---------- */
+
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--edge);
+  z-index: 100;
+  background: var(--umber);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.site-nav .wordmark {
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cream);
+  border-bottom: 2px solid var(--baby-blue);
+  padding-bottom: 2px;
+}
+
+.site-nav .wordmark span {
+  color: var(--cream-soft);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 6px 2px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+  opacity: 0.9;
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  opacity: 1;
+  border-bottom-color: var(--cream);
+}
+
+.nav-links .nav-book {
+  border: 1px solid var(--cream);
+  border-radius: 999px;
+  padding: 8px 20px;
+}
+
+.nav-links .nav-book:hover {
+  background: var(--baby-blue);
+  border-color: var(--baby-blue);
+  color: var(--umber);
+  border-bottom-color: transparent;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .nav-toggle { display: block; }
+
+  .nav-links {
+    position: fixed;
+    top: 0; right: 0;
+    height: 100vh;
+    width: min(78vw, 320px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 28px;
+    padding: 0 var(--edge);
+    background: var(--umber-deeper);
+    transform: translateX(100%);
+    transition: transform 0.32s ease;
+  }
+
+  .nav-links.is-open { transform: translateX(0); }
+
+  .nav-links a { font-size: 20px; color: var(--cream); }
+  .nav-links .nav-book { border-color: var(--cream); }
+}
+
+/* ---------- Hero ----------
+   Split-screen, not full-bleed: a solid dark text panel on the left,
+   a photo panel on the right. Deliberately not Sawyer's centered
+   text-over-photo hero — this reads as a distinct composition even
+   before real photos or copy are in. Images still come from
+   content/settings.json (heroImages) via #hero-bg-container; only
+   the layout around them changed, not how script.js fills them in. */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: min(92vh, 820px);
+  display: grid;
+  grid-template-columns: minmax(340px, 44%) 1fr;
+  padding-top: var(--nav-height);
+}
+
+.hero-bg {
+  position: relative;
+  grid-column: 2;
+  display: flex;
+  z-index: 0;
+  background: var(--umber-dark);
+}
+
+.hero-bg img {
+  /* Equal-width panels regardless of count — 1, 2, or 3 images all
+     split the row evenly (no fixed width, which only worked for
+     exactly 2). */
+  flex: 1 1 0;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(16,20,28,0.55) 0%, rgba(16,20,28,0) 18%), linear-gradient(180deg, rgba(16,20,28,0) 70%, rgba(16,20,28,0.6) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  grid-column: 1;
+  text-align: left;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px var(--edge);
+  background: var(--umber);
+  border-right: 1px solid var(--hairline);
+}
+
+.hero-socials {
+  display: flex;
+  justify-content: flex-start;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: min(48vh, 420px) auto;
+    min-height: 0;
+  }
+
+  .hero-bg {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .hero-content {
+    grid-column: 1;
+    grid-row: 2;
+    max-width: none;
+    border-right: none;
+    border-bottom: 1px solid var(--hairline);
+    align-items: flex-start;
+    padding: 40px var(--edge);
+  }
+}
+
+.hero-socials a {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(247, 244, 236, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  color: var(--paper);
+}
+
+.hero-socials a:hover {
+  border-color: var(--paper);
+  transform: translateY(-2px);
+}
+
+.hero-socials svg { width: 20px; height: 20px; }
+
+.intro-eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--paper-soft);
+  margin: 0 0 16px;
+}
+
+.intro-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  margin: 0 0 20px;
+  color: var(--paper);
+}
+
+.intro-sub {
+  font-size: clamp(16px, 1.6vw, 19px);
+  max-width: 420px;
+  margin: 0 0 28px;
+  color: var(--paper-soft);
+}
+
+/* .hero-content sits on .hero-bg::after's always-dark scrim (see
+   comment above .hero-bg::after) regardless of theme, so its .btn
+   needs the theme-independent --paper treatment too, not the normal
+   themed .btn colors used everywhere else on the site. */
+.hero-content .btn {
+  border-color: var(--paper);
+  color: var(--paper);
+}
+
+.hero-content .btn:hover {
+  color: var(--umber);
+}
+
+/* ---------- Bento grid ----------
+   Reused for the "Recent Favorites" strip further down the page —
+   varying tile sizes on purpose, one gap size, one radius, one crop
+   rule (object-fit: cover) holds it together no matter how the
+   sizes are mixed. */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, minmax(90px, 12vw));
+  grid-template-areas:
+    "a a b c"
+    "a a b c"
+    "a a d e"
+    "f g g g"
+    "f g g g"
+    "h g g g";
+  gap: 6px;
+}
+
+.bento-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--umber-dark);
+}
+
+.bento-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.bento-item:hover img { transform: scale(1.04); }
+
+.bento-item .cap {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 14px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: linear-gradient(to top, rgba(20,18,15,0.65), transparent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.bento-item:hover .cap { opacity: 1; }
+
+/* Two "big" frames (a, g), the rest deliberately smaller and
+   mismatched (b/c/d/e/f/h) — sized by hand so the grid tiles
+   perfectly with no leftover gaps. */
+.bento-item.item-a { grid-area: a; }
+.bento-item.item-b { grid-area: b; }
+.bento-item.item-c { grid-area: c; }
+.bento-item.item-d { grid-area: d; }
+.bento-item.item-e { grid-area: e; }
+.bento-item.item-f { grid-area: f; }
+.bento-item.item-g { grid-area: g; }
+.bento-item.item-h { grid-area: h; }
+
+/* item-a and item-e hold tall portrait photos inside wide, short
+   boxes — a plain center crop cut the runner down to just his head
+   and the wrestler down to just his legs. Shifting the crop window
+   keeps the actual subject in frame instead of the empty background
+   around them. */
+.bento-item.item-a img { object-position: center 85%; }
+.bento-item.item-e img { object-position: center 12%; }
+
+@media (max-width: 760px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(9, minmax(110px, 30vw));
+    grid-template-areas:
+      "a a"
+      "a a"
+      "b c"
+      "d e"
+      "g g"
+      "g g"
+      "g g"
+      "f h";
+  }
+}
+
+/* ---------- Buttons / links ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border: 1px solid var(--cream);
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--baby-blue);
+  border-color: var(--baby-blue);
+  color: var(--umber);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--cream-soft);
+  padding-bottom: 2px;
+  transition: border-color 0.2s ease;
+}
+
+.text-link:hover { border-color: var(--cream); }
+
+/* ---------- Sections ---------- */
+
+section {
+  padding: 100px var(--edge);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.section-kicker {
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cream-soft);
+  margin: 0 0 10px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 5vw, 56px);
+  margin: 0;
+  line-height: 1;
+}
+
+.section-copy {
+  max-width: 560px;
+  color: var(--cream-soft);
+  font-size: 17px;
+}
+
+/* ---------- Promo bands (about teaser + book CTA) ----------
+   Two distinct-background bands sandwiching the category browse
+   section, same rhythm as colevisuals' preset-shop promo and
+   "where I'll be / book me" bands — text-driven, no photos, so
+   they read as calm interruptions between the photo-heavy areas. */
+
+.promo-band {
+  margin: 0 var(--edge);
+  padding: 64px var(--edge);
+  border-radius: 2px;
+  background: var(--baby-blue);
+  color: var(--umber);
+  text-align: center;
+}
+
+.promo-band .section-kicker {
+  text-align: center;
+  color: rgba(28, 27, 24, 0.6);
+}
+
+.promo-band h2 {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4.5vw, 48px);
+  line-height: 1.02;
+  margin: 0 auto 20px;
+  max-width: 720px;
+  color: var(--umber);
+}
+
+.promo-band p.section-copy {
+  margin: 0 auto 28px;
+  text-align: center;
+  color: rgba(28, 27, 24, 0.72);
+}
+
+.promo-band .btn {
+  border-color: var(--umber);
+  color: var(--umber);
+}
+
+.promo-band .btn:hover {
+  background: #000;
+  color: var(--baby-blue);
+  border-color: #000;
+}
+
+.promo-band .text-link {
+  color: var(--umber);
+  border-bottom-color: rgba(28, 27, 24, 0.4);
+}
+
+.promo-band .text-link:hover { border-bottom-color: var(--umber); }
+
+/* ---------- Category browse (gallery.html) ----------
+   The tile picker that used to sit on the homepage — now it lives
+   here instead and doubles as this page's category filter for the
+   grid below (see script.js wireGalleryInteractions), replacing the
+   old plain pill-tab list. */
+
+.category-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.category-tile {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  display: block;
+  background: var(--umber-dark);
+}
+
+.category-tile.is-active {
+  box-shadow: 0 0 0 3px var(--baby-blue) inset;
+}
+
+.category-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.category-tile:hover img { transform: scale(1.05); }
+
+.category-tile .tile-label {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: linear-gradient(to top, rgba(20,18,15,0.7), transparent);
+}
+
+.category-tile .tile-label .arrow {
+  font-family: var(--font-body);
+  font-size: 18px;
+  opacity: 0.85;
+  transition: transform 0.2s ease;
+}
+
+.category-tile:hover .tile-label .arrow { transform: translateX(4px); }
+
+@media (max-width: 900px) {
+  .category-tiles { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 540px) {
+  .category-tiles { grid-template-columns: 1fr; }
+}
+
+/* ---------- Recent favorites (homepage) ----------
+   A small, simple grid — deliberately not the elaborate bento
+   mosaic — pulled from whichever photos are marked as a "Featured
+   tile" in the admin editor (the same bentoSlot field used to power
+   the old homepage grid). This is Sawyer's highlight reel, not the
+   whole gallery. */
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.favorite-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: block;
+  background: var(--umber-dark);
+}
+
+.favorite-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.favorite-item:hover img { transform: scale(1.05); }
+
+.favorite-item .cap {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 12px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: linear-gradient(to top, rgba(20,18,15,0.65), transparent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.favorite-item:hover .cap { opacity: 1; }
+
+@media (max-width: 760px) {
+  .favorites-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Gallery tree (gallery.html) ----------
+   The gallery is now a small browsable tree instead of one flat list:
+   Gallery → Sports → High School → Football → (photos), etc. Every
+   level below the top is a fresh page load (gallery.html?path=...),
+   not an in-page filter — simpler and more reliable than trying to
+   fake multiple levels of filtering in one page. See script.js
+   (initGalleryTree and friends). */
+
+.crumb-trail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cream-soft);
+}
+
+.crumb-trail a { border-bottom: 1px solid transparent; }
+.crumb-trail a:hover { border-bottom-color: var(--cream-soft); }
+.crumb-trail .crumb-sep { opacity: 0.5; }
+.crumb-trail .crumb-current { color: var(--cream); }
+
+/* Placeholder tiles/icons — used two ways: (1) as the tile for a
+   branch that has no real photos yet (e.g. "Professional" shown
+   inside the Sports tile grid) — still a real, clickable link; and
+   (2) as the three static "coming soon" icons shown once you're
+   inside an empty branch — not clickable, just a placeholder. */
+
+.placeholder-tile {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--umber-dark);
+  border: 1px dashed var(--hairline);
+  color: var(--cream-soft);
+}
+
+.placeholder-tile svg {
+  width: 28px;
+  height: 28px;
+  opacity: 0.5;
+}
+
+.placeholder-tile .tile-label {
+  position: static;
+  background: none;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cream-soft);
+}
+
+a.placeholder-tile:hover {
+  border-color: var(--cream-soft);
+  color: var(--cream);
+}
+
+a.placeholder-tile:hover .tile-label { color: var(--cream); }
+
+/* ---------- Category hero (leaf pages — Football, Nature, etc.) ----------
+   A large photo behind a bold title, with a light parallax drift as
+   you scroll (see script.js wireParallax). Falls back to a plain
+   gradient placeholder when a category has no photo yet (e.g. Soccer,
+   until Sawyer shoots one). */
+
+.category-hero {
+  position: relative;
+  height: 56vh;
+  min-height: 380px;
+  margin-top: var(--nav-height);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-hero[hidden] { display: none; }
+
+.category-hero-bg {
+  position: absolute;
+  inset: -12% 0;
+  z-index: 0;
+}
+
+.category-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.category-hero-bg.is-placeholder {
+  background: linear-gradient(160deg, var(--umber-dark), var(--umber));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-hero-bg.is-placeholder svg {
+  width: 64px;
+  height: 64px;
+  color: var(--cream-soft);
+  opacity: 0.35;
+}
+
+.category-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(28,27,24,0.35) 0%, rgba(28,27,24,0.78) 100%);
+}
+
+.category-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.category-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 10vw, 128px);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--paper);
+  margin: 0;
+}
+
+.category-hero-note {
+  margin: 14px 0 0;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper-soft);
+}
+
+.empty-state {
+  padding: 48px 0;
+  text-align: center;
+  color: var(--cream-soft);
+  font-size: 16px;
+}
+
+/* Masonry, not a uniform crop wall: each photo keeps its own aspect
+   ratio (CSS columns + break-inside: avoid) instead of every tile
+   being force-cropped to the same 4:5 box. Deliberately different
+   rhythm from a plain grid — reads as a real print portfolio rather
+   than a template. */
+.gallery-grid {
+  column-count: 3;
+  column-gap: 10px;
+  margin-top: 48px;
+}
+
+.gallery-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  break-inside: avoid;
+  margin-bottom: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--umber-dark);
+  scroll-margin-top: calc(var(--nav-height, 72px) + 100px);
+}
+
+/* Briefly flashes when a bento tile deep-links here, so it's obvious
+   which photo you jumped to. */
+.gallery-item.is-highlighted {
+  box-shadow: 0 0 0 3px var(--cream) inset;
+}
+.gallery-item.is-highlighted::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--cream);
+  opacity: 0.3;
+  animation: highlight-fade 1.6s ease forwards;
+}
+@keyframes highlight-fade {
+  0% { opacity: 0.3; }
+  100% { opacity: 0; }
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img { transform: scale(1.05); }
+
+.gallery-item .cap {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 16px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: linear-gradient(to top, rgba(20,18,15,0.65), transparent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.gallery-item:hover .cap { opacity: 1; }
+
+.gallery-item[hidden] { display: none; }
+
+@media (max-width: 900px) {
+  .gallery-grid { column-count: 2; }
+}
+
+@media (max-width: 540px) {
+  .gallery-grid { column-count: 1; }
+}
+
+/* ---------- Lightbox ---------- */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(20, 18, 15, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.lightbox[hidden] { display: none; }
+
+.lightbox img {
+  max-height: 88vh;
+  max-width: 100%;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px; right: 32px;
+  background: none;
+  border: none;
+  color: var(--paper);
+  font-size: 32px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* ---------- About ----------
+   Portrait bleeds to the viewport edge instead of sitting boxed and
+   centered — the negative margin cancels out the section's normal
+   --edge gutter just for this row, and .about-copy's right padding
+   adds it back so the text column still reads at the usual inset.
+   Same "photo panel + accent-bordered text panel" language as the
+   homepage hero split, so the two pages feel like one system. */
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 38%) 1fr;
+  gap: 0;
+  align-items: stretch;
+  margin: 0 calc(-1 * var(--edge));
+}
+
+.about-layout img {
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  object-fit: cover;
+}
+
+.about-copy {
+  padding: 48px calc(var(--edge) + 8px) 48px 56px;
+  border-left: 3px solid var(--baby-blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-copy p { color: var(--cream-soft); font-size: 17px; }
+
+@media (max-width: 800px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
+
+  .about-layout img { min-height: 340px; }
+
+  .about-copy {
+    padding: 32px 0 0;
+    border-left: none;
+    border-top: 3px solid var(--baby-blue);
+    margin-top: 32px;
+  }
+}
+
+/* ---------- Contact ---------- */
+
+.contact-wrap {
+  max-width: 640px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 40px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+@media (max-width: 560px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+
+.contact-form label,
+.contact-form legend {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream-soft);
+  margin-bottom: 6px;
+  padding: 0;
+  display: block;
+}
+
+.contact-form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* Preset shoot-type pills — same idea as colevisuals.co's service-type
+   picker: a real (visually hidden) radio input per option, so this
+   still works with no JS. .pill-label needs to out-rank the generic
+   ".contact-form label" rule above (same properties, different look),
+   hence the extra .contact-form prefix here for specificity. */
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* .visually-hidden's own width/height lose to ".contact-form input"'s
+   width:100% (higher specificity — class+element beats one class),
+   which left these radios sitting on top of their own pill labels as
+   invisible full-width strips. Re-pin the size here (specific enough
+   to win) and belt-and-suspenders it with pointer-events:none so a
+   click always reaches the visible label, not the input underneath. */
+.contact-form .pill-radio {
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.contact-form .pill-label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid var(--cream-soft);
+  border-radius: 999px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 0;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.contact-form .pill-label:hover { border-color: var(--cream); }
+
+.pill-radio:checked + .pill-label {
+  background: var(--cream);
+  color: var(--umber);
+  border-color: var(--cream);
+}
+
+.pill-radio:focus-visible + .pill-label {
+  outline: 2px solid var(--cream);
+  outline-offset: 2px;
+}
+
+.contact-form .field-hint {
+  font-size: 12px;
+  color: var(--cream-soft);
+  margin: 4px 0 0;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--cream-soft);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 17px;
+  padding: 10px 2px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-bottom-color: var(--cream);
+}
+
+.contact-form textarea { resize: vertical; min-height: 120px; }
+
+.form-status {
+  margin: 0;
+  font-size: 14px;
+  min-height: 1.4em;
+  color: var(--cream-soft);
+}
+
+.form-status.is-ok { color: var(--baby-blue); }
+.form-status.is-error { color: #E8877A; }
+
+.contact-direct {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--hairline);
+  font-size: 15px;
+  color: var(--cream-soft);
+}
+
+.contact-direct a { border-bottom: 1px solid var(--cream-soft); }
+
+/* ---------- Reveal on scroll ----------
+   The hiding is scoped to html.js-anim, which script.js adds itself.
+   That's deliberate: if the JS never runs, never loads, or throws before
+   that line, this rule simply doesn't apply and every bit of the client's
+   content renders normally. Never hide content in a way that depends on
+   JS running correctly to undo it. */
+
+[data-reveal] {
+  transition: opacity 0.8s cubic-bezier(.2,.9,.2,1),
+              transform 0.8s cubic-bezier(.2,.9,.2,1);
+}
+
+html.js-anim [data-reveal]:not(.is-in) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+/* Logged-in owner: no reveals at all, so nothing is ever mid-fade or
+   off-screen-invisible while they're trying to click into it and edit. */
+html.is-admin [data-reveal],
+html.is-admin [data-reveal]:not(.is-in) {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js-anim [data-reveal]:not(.is-in) { opacity: 1; transform: none; }
+  [data-reveal] { transition: none; }
+}
+
+/* ---------- Contact marquee ----------
+   A scrolling strip of real, clickable contact links that sits just
+   above the footer. Content comes from settings.json at runtime
+   (renderContactMarquee in script.js), so the client edits it through
+   the CMS Settings modal like anything else — nothing hardcoded here.
+
+   The loop works because the track holds the same set of links twice
+   and animates to translateX(-50%): half the track is exactly one set,
+   so it's seamless at any width, with no JS running per frame. */
+
+.contact-marquee {
+  overflow: hidden;
+  padding: 20px 0;
+  background: var(--umber-dark);
+  border-top: 1px solid var(--hairline);
+}
+
+.contact-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: cmScroll var(--cm-duration, 32s) linear infinite;
+}
+
+/* Stop on hover/keyboard-focus — these are links people need to
+   actually click, so a moving target would be hostile. */
+.contact-marquee:hover .contact-marquee-track,
+.contact-marquee:focus-within .contact-marquee-track {
+  animation-play-state: paused;
+}
+
+.cm-set { display: flex; align-items: center; }
+
+.cm-item {
+  font-family: var(--font-display);
+  font-size: clamp(19px, 2.8vw, 38px);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  padding: 0 22px;
+  color: var(--cream);
+  transition: color 0.3s ease;
+}
+
+.cm-item:hover { color: var(--baby-blue); }
+
+.cm-sep {
+  color: var(--baby-blue);
+  font-size: 11px;
+  transform: translateY(-2px);
+}
+
+@keyframes cmScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* No scroll: show one static, centered, wrapping row instead. */
+  .contact-marquee-track {
+    animation: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .cm-set[aria-hidden="true"] { display: none; }
+  .cm-set { flex-wrap: wrap; justify-content: center; }
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  padding: 40px var(--edge) 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--cream-soft);
+  border-top: 1px solid var(--hairline);
+}
+
+.site-footer a { border-bottom: 1px solid transparent; }
+.site-footer a:hover { border-bottom-color: var(--cream-soft); }
+
+.footer-social {
+  display: inline-flex;
+  align-items: center;
+  color: var(--cream-soft);
+  border-bottom: none !important;
+}
+.footer-social:hover { color: var(--cream); }
+.footer-social svg { width: 18px; height: 18px; }

@@ -1,0 +1,12 @@
+{
+  "kicker": "Book a shoot",
+  "title": "Tell me about the shoot.",
+  "copy": "Name, contact info, when it's happening, and what you're looking for",
+  "serviceOptions": [
+    "Game coverage",
+    "Team / season",
+    "Senior photos",
+    "Personal project",
+    "Other"
+  ]
+}

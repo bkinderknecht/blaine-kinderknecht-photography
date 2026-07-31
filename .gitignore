@@ -1,0 +1,16 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Python (gen_assets.py)
+__pycache__/
+*.pyc
+
+# In case any local tooling gets added later (Netlify CLI, npm scripts, etc.)
+node_modules/
+.env
+.netlify/

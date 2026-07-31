@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blaine Kinderknecht — Photography</title>
+<meta name="description" content="Blaine Kinderknecht, photographer. Action, intensity, the decisive moment — and what comes after sports.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blaine Kinderknecht">
+<meta property="og:title" content="Blaine Kinderknecht — Photography">
+<meta property="og:description" content="Blaine Kinderknecht, photographer. Action, intensity, the decisive moment — and what comes after sports.">
+<meta property="og:image" content="https://REPLACE-WITH-CLIENT-DOMAIN.netlify.app/assets/photos/REPLACE-WITH-A-REAL-PHOTO.jpg">
+<meta property="og:url" content="https://REPLACE-WITH-CLIENT-DOMAIN.netlify.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blaine Kinderknecht — Photography">
+<meta name="twitter:description" content="Blaine Kinderknecht, photographer. Action, intensity, the decisive moment — and what comes after sports.">
+<meta name="twitter:image" content="https://REPLACE-WITH-CLIENT-DOMAIN.netlify.app/assets/photos/REPLACE-WITH-A-REAL-PHOTO.jpg">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="wordmark">Blaine Kinderknecht</a>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html" aria-current="page">Home</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-book">Book</a></li>
+  </ul>
+</nav>
+
+<!-- Hero background: 1-3 large photos behind the headline, dimmed by
+     a charcoal scrim so the type stays readable. Images come from
+     content/settings.json's "heroImages" (see script.js's
+     renderHeroImages) so swapping them — or changing how many there
+     are — is a content edit, not an HTML edit. The two <img> tags
+     here are just a fallback in case that JSON fails to load. -->
+<div class="hero">
+  <div class="hero-bg" id="hero-bg-container" aria-hidden="true">
+    <img src="assets/photos/REPLACE-WITH-A-REAL-PHOTO.jpg" alt="">
+    <img src="assets/photos/REPLACE-WITH-A-REAL-PHOTO.jpg" alt="">
+  </div>
+  <div class="hero-content">
+    <nav class="hero-socials" aria-label="Social">
+      <a id="hero-instagram" href="https://www.instagram.com/_bkinderknecht/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a id="hero-tiktok" href="[TIKTOK_URL]" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-1.36-1.57-3.24-1.48-3.24-1.48h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V11.5c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
+      </a>
+    </nav>
+    <p id="hero-eyebrow" class="intro-eyebrow">[City] &amp; beyond</p>
+    <h1 id="hero-title" class="intro-title">[Hero headline]</h1>
+    <p id="hero-sub" class="intro-sub">[One or two sentences on shooting style/philosophy]</p>
+    <a href="contact.html" class="btn">Book</a>
+  </div>
+</div>
+
+<!-- About teaser band: replaces the "Preset Shop" promo block from
+     the inspiration site with a pointer to Sawyer's About page. Copy
+     here is fixed marketing text (same pattern as the hero subhead) —
+     the About page itself is what's driven by content/about.json. -->
+<div class="promo-band">
+  <p id="about-promo-kicker" class="section-kicker">About</p>
+  <h2 id="about-promo-heading">Meet the photographer.</h2>
+  <p id="about-promo-copy" class="section-copy">[Short teaser for the About page]</p>
+  <a href="about.html" class="text-link">[Meet Photographer] &rarr;</a>
+</div>
+
+<!-- Recent favorites: a small highlight reel, not the full gallery —
+     pulled from whichever photos are marked as a "Featured tile" in
+     the /admin editor (assets/photos/meta.json's bentoSlot field).
+     Filled in at load time by script.js. -->
+<section>
+  <div class="section-head">
+    <div>
+      <p id="favorites-kicker" class="section-kicker">Recent favorites</p>
+      <h2 id="favorites-title" class="section-title">[Favorites headline].</h2>
+      <p id="favorites-copy" class="section-copy">The shots that made the cut — swapped out the moment something better comes off a card.</p>
+    </div>
+  </div>
+
+  <div class="favorites-grid"></div>
+</section>
+
+<div class="promo-band">
+  <p id="book-promo-kicker" class="section-kicker">Book a shoot</p>
+  <h2 id="book-promo-heading">Available to travel. Let's shoot your game.</h2>
+  <a href="contact.html" class="btn">Book now</a>
+</div>
+
+<!-- Contact marquee — content is built at runtime from
+     content/settings.json (renderContactMarquee in script.js), so it
+     stays CMS-editable and never hardcodes contact details here. -->
+<div class="contact-marquee" id="contact-marquee" hidden>
+  <div class="contact-marquee-track" data-marquee-track></div>
+</div>
+
+<footer class="site-footer">
+  <span id="footer-copyright">&copy; 2026 Blaine Kinderknecht Photography</span>
+  <a id="footer-instagram" href="https://www.instagram.com/_bkinderknecht/" target="_blank" rel="noopener" aria-label="Instagram" class="footer-social">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+  </a>
+  <a id="footer-tiktok" href="[TIKTOK_URL]" target="_blank" rel="noopener" aria-label="TikTok" class="footer-social">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-1.36-1.57-3.24-1.48-3.24-1.48h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V11.5c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
+  </a>
+  <a href="contact.html">Book a shoot &rarr;</a>
+</footer>
+
+<script src="script.js?v=6"></script>
+<script src="admin-loader.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Blaine Kinderknecht</title>
+<meta name="description" content="The full gallery — Sports, Projects, Senior Photos, Nature, and Cars. Blaine Kinderknecht Photography.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Blaine Kinderknecht">
+<meta property="og:title" content="Gallery — Blaine Kinderknecht">
+<meta property="og:description" content="The full gallery — Sports, Projects, Senior Photos, Nature, and Cars. Blaine Kinderknecht Photography.">
+<meta property="og:image" content="https://REPLACE-WITH-CLIENT-DOMAIN.netlify.app/assets/photos/REPLACE-WITH-A-REAL-PHOTO.jpg">
+<meta property="og:url" content="https://REPLACE-WITH-CLIENT-DOMAIN.netlify.app/gallery.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gallery — Blaine Kinderknecht">
+<meta name="twitter:description" content="The full gallery — Sports, Projects, Senior Photos, Nature, and Cars. Blaine Kinderknecht Photography.">
+<meta name="twitter:image" content="https://REPLACE-WITH-CLIENT-DOMAIN.netlify.app/assets/photos/REPLACE-WITH-A-REAL-PHOTO.jpg">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="wordmark">Blaine Kinderknecht</a>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="gallery.html" aria-current="page">Gallery</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-book">Book</a></li>
+  </ul>
+</nav>
+
+<!-- The gallery is a small browsable tree, not one flat list:
+     Gallery → Sports → High School → Football → (photos), etc.
+     Which level is showing right now is driven entirely by
+     ?path=a/b/c in the URL and content/taxonomy.json — see
+     script.js's initGalleryTree. Nothing below is hand-written per
+     category; add a sport, a photo, or a whole new top-level
+     category by editing taxonomy.json and meta.json, not this file. -->
+<section class="taxonomy-root" style="padding-top: calc(var(--nav-height) + 64px);">
+  <nav class="crumb-trail" aria-label="Breadcrumb"></nav>
+
+  <!-- Branch view: a grid of tiles, shown at every level that isn't
+       an actual photo category yet (Gallery, Sports, High School,
+       Professional, Projects, ...). -->
+  <div class="branch-view">
+    <h1 class="section-title tree-title" style="margin-bottom: 40px;"></h1>
+    <div class="category-tiles-slot category-tiles"></div>
+  </div>
+</section>
+
+<!-- Leaf view: shown only once the path resolves to an actual photo
+     category (Football, Nature, ...) — a big photo behind the sport's
+     name, then the photos themselves below it. -->
+<div class="category-hero-slot category-hero" hidden></div>
+<section class="leaf-grid-section" hidden>
+  <div class="gallery-grid"></div>
+</section>
+
+<div class="lightbox" hidden>
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <img src="" alt="">
+</div>
+
+<!-- Contact marquee — content is built at runtime from
+     content/settings.json (renderContactMarquee in script.js), so it
+     stays CMS-editable and never hardcodes contact details here. -->
+<div class="contact-marquee" id="contact-marquee" hidden>
+  <div class="contact-marquee-track" data-marquee-track></div>
+</div>
+
+<footer class="site-footer">
+  <span id="footer-copyright">&copy; 2026 Blaine Kinderknecht Photography</span>
+  <a id="footer-instagram" href="https://www.instagram.com/_bkinderknecht/" target="_blank" rel="noopener" aria-label="Instagram" class="footer-social">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+  </a>
+  <a id="footer-tiktok" href="[TIKTOK_URL]" target="_blank" rel="noopener" aria-label="TikTok" class="footer-social">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-1.36-1.57-3.24-1.48-3.24-1.48h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V11.5c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
+  </a>
+  <a href="contact.html">Book a shoot &rarr;</a>
+</footer>
+
+<script src="script.js?v=6"></script>
+<script src="admin-loader.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+# Static site, no build step — the same plain HTML/CSS/JS this project
+# has always been. Only new thing here is pointing Netlify at the
+# admin CMS's serverless functions.
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Baseline hardening — deliberately no Content-Security-Policy here yet;
+# getting one right requires auditing every script/font/style source
+# (Google Fonts, admin.js's dynamic <script>/<link> injection) and a
+# wrong CSP silently breaks the admin login, which is worse than no CSP.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
