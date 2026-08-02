@@ -892,11 +892,27 @@ function wireContactForm(root) {
 // Homepage-only: the arrow-paged "browse by category" row between
 // Select Works and the About teaser. Reuses renderTileGrid (the same
 // function that builds gallery.html's own category picker) against
-// content/taxonomy.json's Sports branch, so adding/renaming a sport
-// there is the only edit needed — nothing hardcoded here. The arrow
-// buttons just scroll the row by one tile's width; native
-// drag/trackpad scrolling works regardless since it's a real
-// overflow-x container underneath.
+// content/taxonomy.json, so adding/renaming a category there is the
+// only edit needed — nothing hardcoded here. The arrow buttons just
+// scroll the row by one tile's width; native drag/trackpad scrolling
+// works regardless since it's a real overflow-x container underneath.
+//
+// Flattens every leaf category across ALL top-level branches rather
+// than just one, so the row intentionally mixes e.g. Cross Country
+// and Festivals — a visitor browsing the homepage cares about the
+// subject, not which branch of the tree it's filed under.
+function flattenLeafCategories(nodes) {
+  const out = [];
+  (nodes || []).forEach((node) => {
+    if (node.children && node.children.length) {
+      out.push(...flattenLeafCategories(node.children));
+    } else {
+      out.push(node);
+    }
+  });
+  return out;
+}
+
 async function renderHomeCategoryCarousel(root, photos) {
   const container = root.querySelector('#home-category-carousel');
   if (!container) return;
@@ -907,9 +923,9 @@ async function renderHomeCategoryCarousel(root, photos) {
     console.error('[site] category carousel failed to load taxonomy:', err);
     return;
   }
-  const sportsNode = (taxonomy.tiles || []).find((t) => t.slug === 'sports');
-  if (!sportsNode || !sportsNode.children || !sportsNode.children.length) return;
-  renderTileGrid(container, sportsNode.children, photos);
+  const leaves = flattenLeafCategories(taxonomy.tiles);
+  if (!leaves.length) return;
+  renderTileGrid(container, leaves, photos);
 
   const wrap = container.closest('.category-carousel-wrap');
   if (!wrap) return;
@@ -922,6 +938,21 @@ async function renderHomeCategoryCarousel(root, photos) {
   };
   if (prevBtn) prevBtn.addEventListener('click', () => scrollByTile(-1));
   if (nextBtn) nextBtn.addEventListener('click', () => scrollByTile(1));
+
+  // Grey out whichever arrow can't do anything from here. The 2px
+  // slack absorbs sub-pixel scrollWidth rounding, which otherwise
+  // leaves "next" looking enabled at the far right on some zoom
+  // levels. Runs on scroll, on resize (the row's overflow depends on
+  // viewport width), and once now for the initial state.
+  const syncArrows = () => {
+    const max = container.scrollWidth - container.clientWidth;
+    const x = container.scrollLeft;
+    if (prevBtn) prevBtn.disabled = x <= 2;
+    if (nextBtn) nextBtn.disabled = x >= max - 2;
+  };
+  container.addEventListener('scroll', syncArrows, { passive: true });
+  window.addEventListener('resize', syncArrows);
+  syncArrows();
 }
 
 async function initPage() {
@@ -1020,5 +1051,6 @@ if (typeof module !== 'undefined' && module.exports) {
     escapeHtml, photoIdSlug, photoImgSrc,
     assignTaxonomyPaths, findPathForCategory, pickRepresentativePhoto,
     renderTileGrid, renderPlaceholderIcons, renderCategoryHero, renderCrumbTrail,
+    flattenLeafCategories,
   };
 }

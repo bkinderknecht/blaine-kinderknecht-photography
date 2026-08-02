@@ -1,75 +1,1689 @@
 {
   "photos": [
     {
-      "slug": "placeholder-fav-1",
-      "category": "football",
-      "caption": "Placeholder — swap for a real photo",
-      "bentoSlot": "a"
+      "slug": "baseball-03",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
     },
     {
-      "slug": "placeholder-fav-2",
-      "category": "wrestling",
-      "caption": "Placeholder — swap for a real photo",
-      "bentoSlot": "b"
+      "slug": "baseball-12",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
     },
     {
-      "slug": "placeholder-fav-3",
-      "category": "track",
-      "caption": "Placeholder — swap for a real photo",
+      "slug": "baseball-13",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-14",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-18",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-21",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-23",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-24",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-26",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-33",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-34",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-37",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-39",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-52",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-56",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-61",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-62",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-69",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-71",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-72",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "baseball-87",
+      "category": "baseball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-01",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-03",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-04",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-06",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-11",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-13",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-18",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-19",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-21",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-26",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-28",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-31",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-32",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-37",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-38",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-39",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-40",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-43",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-47",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "boys-basketball-53",
+      "category": "boys-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-01",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-03",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-04",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-05",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-10",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-11",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-12",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-13",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-14",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-15",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-17",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-18",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-19",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-20",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-21",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-22",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-25",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-26",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-28",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "cross-country-30",
+      "category": "cross-country",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-01",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-02",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-04",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-05",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-06",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-08",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-10",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-11",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-13",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-16",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-17",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-18",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-19",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-20",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-22",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-23",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-26",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-27",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-28",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "events-29",
+      "category": "events",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "farming-01",
+      "category": "farming",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "farming-02",
+      "category": "farming",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "farming-03",
+      "category": "farming",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "farming-04",
+      "category": "farming",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "farming-05",
+      "category": "farming",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "farming-06",
+      "category": "farming",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "farming-07",
+      "category": "farming",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "farming-08",
+      "category": "farming",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "farming-09",
+      "category": "farming",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "farming-10",
+      "category": "farming",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "farming-11",
+      "category": "farming",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "farming-12",
+      "category": "farming",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "farming-13",
+      "category": "farming",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "farming-14",
+      "category": "farming",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-01",
+      "category": "featured",
+      "caption": "Farm & country",
       "bentoSlot": "c"
     },
     {
-      "slug": "placeholder-gallery-1",
+      "slug": "featured-02",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-03",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-04",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-05",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-06",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-07",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-08",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-09",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-10",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-11",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-12",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-13",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-14",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-15",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-16",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-17",
+      "category": "featured",
+      "caption": "Baseball",
+      "bentoSlot": "a"
+    },
+    {
+      "slug": "featured-18",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-19",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-20",
+      "category": "featured",
+      "caption": "Basketball",
+      "bentoSlot": "b"
+    },
+    {
+      "slug": "featured-21",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-22",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-23",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-24",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-25",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-26",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "featured-27",
+      "category": "featured",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-07",
       "category": "football",
-      "caption": "Placeholder — swap for a real photo",
+      "caption": "",
       "bentoSlot": ""
     },
     {
-      "slug": "placeholder-gallery-2",
+      "slug": "football-13",
       "category": "football",
-      "caption": "Placeholder — swap for a real photo",
+      "caption": "",
       "bentoSlot": ""
     },
     {
-      "slug": "placeholder-gallery-3",
+      "slug": "football-14",
       "category": "football",
-      "caption": "Placeholder — swap for a real photo",
+      "caption": "",
       "bentoSlot": ""
     },
     {
-      "slug": "placeholder-gallery-4",
+      "slug": "football-16",
       "category": "football",
-      "caption": "Placeholder — swap for a real photo",
+      "caption": "",
       "bentoSlot": ""
     },
     {
-      "slug": "placeholder-basketball",
-      "category": "basketball",
-      "caption": "Placeholder — swap for a real photo",
+      "slug": "football-19",
+      "category": "football",
+      "caption": "",
       "bentoSlot": ""
     },
     {
-      "slug": "placeholder-baseball",
-      "category": "baseball",
-      "caption": "Placeholder — swap for a real photo",
+      "slug": "football-20",
+      "category": "football",
+      "caption": "",
       "bentoSlot": ""
     },
     {
-      "slug": "placeholder-volleyball",
+      "slug": "football-24",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-25",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-33",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-34",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-39",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-43",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-50",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-54",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-61",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-62",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-65",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-66",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-69",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-70",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-74",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "football-78",
+      "category": "football",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-02",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-04",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-05",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-07",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-09",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-11",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-12",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-13",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-15",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-16",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-25",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-29",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-30",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-32",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-37",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-38",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-40",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-41",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-46",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "girls-basketball-48",
+      "category": "girls-basketball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-02",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-03",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-04",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-05",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-06",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-08",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-09",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-10",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-11",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-12",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-13",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-14",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-16",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-17",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-19",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-20",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-21",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-23",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-24",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "golf-25",
+      "category": "golf",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "lifting-01",
+      "category": "lifting",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "lifting-02",
+      "category": "lifting",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "lifting-03",
+      "category": "lifting",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "lifting-04",
+      "category": "lifting",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "lifting-05",
+      "category": "lifting",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "lifting-06",
+      "category": "lifting",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "lifting-07",
+      "category": "lifting",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "lifting-08",
+      "category": "lifting",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "lifting-09",
+      "category": "lifting",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "lifting-10",
+      "category": "lifting",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "lifting-11",
+      "category": "lifting",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "senior-01",
+      "category": "senior",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "senior-02",
+      "category": "senior",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "senior-03",
+      "category": "senior",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "senior-04",
+      "category": "senior",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "senior-05",
+      "category": "senior",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-02",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-03",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-04",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-06",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-08",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-10",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-11",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-12",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-13",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-14",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-15",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-17",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-18",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-19",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-20",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-21",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-22",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-24",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-25",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "softball-26",
+      "category": "softball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-01",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-02",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-04",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-05",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-06",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-15",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-18",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-19",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-21",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-22",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-27",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-33",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-40",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-47",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-48",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-53",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-58",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-60",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-61",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-75",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "track-76",
+      "category": "track",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-01",
       "category": "volleyball",
-      "caption": "Placeholder — swap for a real photo",
+      "caption": "",
       "bentoSlot": ""
     },
     {
-      "slug": "placeholder-soccer",
-      "category": "soccer",
-      "caption": "Placeholder — swap for a real photo",
+      "slug": "volleyball-03",
+      "category": "volleyball",
+      "caption": "",
       "bentoSlot": ""
     },
     {
-      "slug": "placeholder-crowd",
-      "category": "crowd",
-      "caption": "Placeholder — swap for a real photo",
+      "slug": "volleyball-05",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-08",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-10",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-12",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-19",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-21",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-22",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-25",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-35",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-36",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-38",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-44",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-48",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-56",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-62",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-63",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-66",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "volleyball-67",
+      "category": "volleyball",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-01",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-03",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-04",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-05",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-07",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-10",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-11",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-12",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-13",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-14",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-15",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-16",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-17",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-18",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-19",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-21",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-23",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-25",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-26",
+      "category": "wrestling",
+      "caption": "",
+      "bentoSlot": ""
+    },
+    {
+      "slug": "wrestling-28",
+      "category": "wrestling",
+      "caption": "",
       "bentoSlot": ""
     }
   ]

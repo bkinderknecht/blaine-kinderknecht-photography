@@ -2,8 +2,15 @@
   "rootLabel": "Work",
   "tiles": [
     {
+      "slug": "featured",
+      "label": "Best of the Best",
+      "category": "featured",
+      "path": "featured"
+    },
+    {
       "slug": "sports",
       "label": "Sports",
+      "path": "sports",
       "children": [
         {
           "slug": "football",
@@ -12,28 +19,16 @@
           "path": "sports/football"
         },
         {
-          "slug": "basketball",
-          "label": "Basketball",
-          "category": "basketball",
-          "path": "sports/basketball"
+          "slug": "boys-basketball",
+          "label": "Boys Basketball",
+          "category": "boys-basketball",
+          "path": "sports/boys-basketball"
         },
         {
-          "slug": "track",
-          "label": "Track",
-          "category": "track",
-          "path": "sports/track"
-        },
-        {
-          "slug": "baseball",
-          "label": "Baseball",
-          "category": "baseball",
-          "path": "sports/baseball"
-        },
-        {
-          "slug": "wrestling",
-          "label": "Wrestling",
-          "category": "wrestling",
-          "path": "sports/wrestling"
+          "slug": "girls-basketball",
+          "label": "Girls Basketball",
+          "category": "girls-basketball",
+          "path": "sports/girls-basketball"
         },
         {
           "slug": "volleyball",
@@ -42,56 +37,73 @@
           "path": "sports/volleyball"
         },
         {
-          "slug": "soccer",
-          "label": "Soccer",
-          "category": "soccer",
-          "path": "sports/soccer"
+          "slug": "track",
+          "label": "Track & Field",
+          "category": "track",
+          "path": "sports/track"
         },
         {
-          "slug": "crowd",
-          "label": "Crowd",
-          "category": "crowd",
-          "path": "sports/crowd"
+          "slug": "cross-country",
+          "label": "Cross Country",
+          "category": "cross-country",
+          "path": "sports/cross-country"
+        },
+        {
+          "slug": "baseball",
+          "label": "Baseball",
+          "category": "baseball",
+          "path": "sports/baseball"
+        },
+        {
+          "slug": "softball",
+          "label": "Softball",
+          "category": "softball",
+          "path": "sports/softball"
+        },
+        {
+          "slug": "wrestling",
+          "label": "Wrestling",
+          "category": "wrestling",
+          "path": "sports/wrestling"
+        },
+        {
+          "slug": "golf",
+          "label": "Golf",
+          "category": "golf",
+          "path": "sports/golf"
+        },
+        {
+          "slug": "lifting",
+          "label": "Lifting",
+          "category": "lifting",
+          "path": "sports/lifting"
         }
-      ],
-      "path": "sports"
+      ]
     },
     {
-      "slug": "beyond-the-action",
-      "label": "Beyond The Action",
+      "slug": "beyond",
+      "label": "Beyond the Sidelines",
+      "path": "beyond",
       "children": [
         {
-          "slug": "projects",
-          "label": "Projects",
-          "placeholder": true,
-          "path": "beyond-the-action/projects"
+          "slug": "events",
+          "label": "Events & Graduations",
+          "category": "events",
+          "path": "beyond/events"
         },
         {
-          "slug": "senior-photos",
+          "slug": "senior",
           "label": "Senior Photos",
-          "placeholder": true,
-          "path": "beyond-the-action/senior-photos"
+          "category": "senior",
+          "path": "beyond/senior"
         },
         {
-          "slug": "nature",
-          "label": "Nature",
-          "placeholder": true,
-          "path": "beyond-the-action/nature"
-        },
-        {
-          "slug": "cars",
-          "label": "Cars",
-          "placeholder": true,
-          "path": "beyond-the-action/cars"
-        },
-        {
-          "slug": "city-life",
-          "label": "City Life",
-          "placeholder": true,
-          "path": "beyond-the-action/city-life"
+          "slug": "farming",
+          "label": "Farm & Country",
+          "category": "farming",
+          "path": "beyond/farming"
         }
-      ],
-      "path": "beyond-the-action"
+      ]
     }
   ]
 }

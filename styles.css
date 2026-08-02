@@ -666,23 +666,54 @@ section {
   scroll-snap-align: start;
 }
 
+/* Real SVG chevrons rather than the &larr;/&rarr; text glyphs these
+   started as — the text arrows rendered at whatever weight the body
+   font happened to have and looked spindly next to Anton's heavy
+   display type. These keep a fixed 2.2 stroke at any size. */
 .carousel-arrow {
   flex: 0 0 auto;
-  width: 44px;
-  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
   border-radius: 999px;
   border: 1px solid var(--hairline);
-  background: none;
+  background: var(--umber-dark);
   color: var(--cream);
-  font-size: 18px;
   cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    transform 0.2s ease, opacity 0.2s ease;
+}
+
+.carousel-arrow svg {
+  width: 22px;
+  height: 22px;
+  display: block;
 }
 
 .carousel-arrow:hover {
   background: var(--accent-deep);
   border-color: var(--accent-deep);
   color: var(--paper);
+  transform: scale(1.06);
+}
+
+.carousel-arrow:active { transform: scale(0.96); }
+
+.carousel-arrow:focus-visible {
+  outline: 2px solid var(--baby-blue);
+  outline-offset: 3px;
+}
+
+/* Set by wireCarouselArrows() once the row hits either end — the
+   button stays in the layout (so the row doesn't shift) but reads as
+   unavailable instead of silently doing nothing on click. */
+.carousel-arrow[disabled] {
+  opacity: 0.3;
+  cursor: default;
+  transform: none;
+  background: none;
 }
 
 @media (max-width: 600px) {
