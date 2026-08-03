@@ -6,7 +6,9 @@
 //
 //   POST /api/content
 //     { file: "about"|"settings"|"meta", data: <new full JSON value>,
-//       deleteImageSlug?: "<slug>" }  // meta.json deletes only
+//       deleteImageSlug?: "<slug>",      // meta.json deletes only
+//       also?: { file: "...", data: <...> } }  // batch a 2nd file into
+//                                               // the same commit
 
 const { getSession } = require('./_lib/session');
 const { updateJson, getFile, putFiles } = require('./_lib/github');
@@ -42,6 +44,20 @@ exports.handler = async (event) => {
       if (existingImage) files.push({ path: imagePath, delete: true });
       files.push({ path, content: serializeContent(body.data), encoding: 'utf-8' });
       await putFiles(files, `Delete photo: ${body.deleteImageSlug} (via admin)`);
+      return json(200, { ok: true });
+    }
+
+    // Same one-commit reasoning as the delete case above, generalized:
+    // any caller that needs to change two of these files together (the
+    // hero-photo picker writes settings.json's heroImages *and*
+    // meta.json's per-photo focus points in the same action) sends the
+    // second one as `also` instead of making its own separate request.
+    if (body.also && CONTENT_PATHS[body.also.file] && body.also.data !== undefined) {
+      const files = [
+        { path, content: serializeContent(body.data), encoding: 'utf-8' },
+        { path: CONTENT_PATHS[body.also.file], content: serializeContent(body.also.data), encoding: 'utf-8' },
+      ];
+      await putFiles(files, `${CONTENT_LABELS[body.file] || 'Update content'} (via admin)`);
       return json(200, { ok: true });
     }
 

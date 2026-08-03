@@ -641,10 +641,19 @@
       ? photos.map((p) => (p.slug === coverSlug ? { ...p, heroFocusX: heroFocus.x, heroFocusY: heroFocus.y } : p))
       : photos;
     try {
-      await apiPost('/api/content', { file: 'taxonomy', data: taxonomyData });
+      // Two separate apiPost calls here (taxonomy.json, then meta.json
+      // only when a focus point came with the pick) meant picking a
+      // cover photo with custom framing cost 30 credits instead of 15
+      // — same bug as the hero-photo picker had, same `also` fix.
       if (nextPhotos !== photos) {
-        await apiPost('/api/content', { file: 'meta', data: { photos: nextPhotos } });
+        await apiPost('/api/content', {
+          file: 'taxonomy',
+          data: taxonomyData,
+          also: { file: 'meta', data: { photos: nextPhotos } },
+        });
         photos = nextPhotos;
+      } else {
+        await apiPost('/api/content', { file: 'taxonomy', data: taxonomyData });
       }
       close();
       setStatus('Saved — may take up to a minute to show for other visitors.', 'ok');
@@ -1302,10 +1311,20 @@
         return { ...p, heroFocusX: focus.x, heroFocusY: focus.y };
       });
       try {
-        await apiPost('/api/content', { file: 'settings', data: next });
-        await savePhotosList(nextPhotos, 'Set hero image framing');
+        // One request, one commit: settings.json (heroImages) and
+        // meta.json (each photo's focus-point framing) used to be two
+        // separate apiPost calls here — two commits, 30 credits for
+        // one "save hero photos" click instead of 15. `also` (see
+        // content.js) writes both files in the same commit, same
+        // pattern as the photo-delete path already used.
+        await apiPost('/api/content', {
+          file: 'settings',
+          data: next,
+          also: { file: 'meta', data: { photos: nextPhotos } },
+        });
         settings = next;
         photos = nextPhotos;
+        refreshAfterPhotoChange();
         close();
         setStatus('Saved — may take up to a minute to show for other visitors.', 'ok');
         renderHeroImages(document, next.heroImages, photos);
