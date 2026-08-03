@@ -432,10 +432,6 @@ function renderHome(root, home) {
   };
   setText('#hero-eyebrow', home.heroEyebrow);
   setText('#hero-title', home.heroTitle);
-  setText('#hero-sub', home.heroSub);
-  setText('#about-promo-kicker', home.aboutPromoKicker);
-  setText('#about-promo-heading', home.aboutPromoHeading);
-  setText('#about-promo-copy', home.aboutPromoCopy);
   setText('#favorites-kicker', home.favoritesKicker);
   setText('#favorites-title', home.favoritesTitle);
   setText('#favorites-copy', home.favoritesCopy);

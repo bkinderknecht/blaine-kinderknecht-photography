@@ -1322,8 +1322,7 @@
 
   function wireHomeEditing() {
     const fieldIds = [
-      'hero-eyebrow', 'hero-title', 'hero-sub',
-      'about-promo-kicker', 'about-promo-heading', 'about-promo-copy',
+      'hero-eyebrow', 'hero-title',
       'favorites-kicker', 'favorites-title', 'favorites-copy',
       'book-promo-kicker', 'book-promo-heading',
     ];

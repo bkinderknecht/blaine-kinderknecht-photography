@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=7">
 
 <!-- Structured data — tells search engines this is a real local business,
      not just a photo page. Ported from Sawyer's site (2026-07-30 SEO pass),
@@ -61,6 +61,34 @@
   ]
 }
 </script>
+
+<!-- Person markup for Blaine, pointed at the business entity above via
+     #business. Lived on about.html until that page was folded into
+     this one (see .hero-intro below), so the structured data moved
+     here rather than being lost with the page. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Blaine Kinderknecht",
+  "jobTitle": "Photographer",
+  "url": "https://REPLACE-WITH-CLIENT-DOMAIN.netlify.app/",
+  "image": "https://REPLACE-WITH-CLIENT-DOMAIN.netlify.app/assets/photos/blaine-portrait.jpg",
+  "worksFor": { "@id": "https://REPLACE-WITH-CLIENT-DOMAIN.netlify.app/#business" },
+  "homeLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "[City]",
+      "addressRegion": "KS",
+      "addressCountry": "US"
+    }
+  },
+  "sameAs": [
+    "https://www.instagram.com/_bkinderknecht/"
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -70,19 +98,18 @@
   <ul class="nav-links">
     <li><a href="index.html" aria-current="page">Home</a></li>
     <li><a href="gallery.html">Work</a></li>
-    <li><a href="about.html">About</a></li>
     <li><a href="contact.html" class="nav-book">Book</a></li>
   </ul>
 </nav>
 
-<!-- Hero, reworked after looking at Squarespace's "McCurry" template for
-     inspiration: oversized display-type headline first (the visual
-     centerpiece, no photo behind it), then a full-bleed photo band
-     directly below — stacked, not the earlier side-by-side split.
-     Images still come from content/settings.json's "heroImages" via
-     #hero-bg-container (see script.js's renderHeroImages); only the
-     layout around them changed. The two <img> tags are a fallback in
-     case that JSON fails to load. -->
+<!-- Hero, back to Sawyer's original photo-behind-everything pattern
+     per Jack: the two hero photos are the actual background of the
+     whole section (see .hero-bg, position: absolute + a dark scrim),
+     not a separate band stacked below the intro. Images still come
+     from content/settings.json's "heroImages" via #hero-bg-container
+     (see script.js's renderHeroImages); only the layout around them
+     changed. The two <img> tags are a fallback in case that JSON
+     fails to load. -->
 <div class="hero">
   <div class="hero-content">
     <nav class="hero-socials" aria-label="Social">
@@ -94,24 +121,43 @@
       </a>
     </nav>
     <p id="hero-eyebrow" class="intro-eyebrow">[City] &amp; beyond</p>
-    <h1 id="hero-title" class="intro-title">Blaine Kinderknecht</h1>
-    <p id="hero-sub" class="intro-sub">[One or two sentences on shooting style/philosophy]</p>
-    <a href="contact.html" class="btn">Book</a>
+    <!-- Nolan-Kruske-style intro per Jack: stacked oversized name +
+         bio here in the text column; the framed portrait (below) is
+         positioned separately, centered over the second background
+         photo specifically — see .hero-portrait-frame's comment.
+         The About page is folded into this (it no longer exists).
+         The #about-bio / #about-portrait ids are kept deliberately:
+         script.js's renderAbout and admin.js's wireAboutEditing find
+         their targets by id, not by page, so Blaine still edits the
+         bio inline and swaps the portrait by clicking it, saving to
+         content/about.json exactly as before. -->
+    <div class="hero-intro">
+      <h1 id="hero-title" class="intro-title">Blaine Kinderknecht</h1>
+      <div id="about-bio" class="intro-bio">
+        <p>[Bio paragraph 1 — how he got into it]</p>
+        <p>[Bio paragraph 2 — what he shoots now]</p>
+        <p>[Bio paragraph 3 — based in ___, available to travel]</p>
+      </div>
+      <a href="contact.html" class="btn">Book</a>
+    </div>
   </div>
+  <!-- Matted frame around the portrait, positioned to sit centered
+       over the second hero photo (the girls embracing) specifically —
+       see .hero-portrait-frame in styles.css for the math. A sibling
+       of .hero-content, not nested inside it, since it needs to
+       position against the full hero width, not the text column's
+       narrower, left-aligned box. -->
+  <div class="hero-portrait-frame">
+    <img id="about-portrait" class="hero-portrait" src="assets/photos/blaine-portrait.jpg" alt="Blaine Kinderknecht with his camera">
+  </div>
+  <!-- Full-bleed background photos behind the whole hero (Sawyer's
+       original pattern), not a separate band below it. .hero-bg::after
+       lays a dark scrim over them so the text/portrait on top stay
+       readable regardless of what the photos look like. -->
   <div class="hero-bg" id="hero-bg-container" aria-hidden="true">
     <img src="assets/photos/featured-26.jpg" alt="">
     <img src="assets/photos/featured-05.jpg" alt="">
   </div>
-</div>
-
-<!-- About teaser band: fixed marketing copy pointing at the About
-     page (same pattern as the hero subhead) — the About page itself
-     is what's driven by content/about.json. -->
-<div class="promo-band">
-  <p id="about-promo-kicker" class="section-kicker">About</p>
-  <h2 id="about-promo-heading">Meet the photographer.</h2>
-  <p id="about-promo-copy" class="section-copy">[Short teaser for the About page]</p>
-  <a href="about.html" class="text-link">[Meet Photographer] &rarr;</a>
 </div>
 
 <!-- Recent favorites: a small highlight reel, not the full gallery —
@@ -182,7 +228,7 @@
   <a href="contact.html">Book a shoot &rarr;</a>
 </footer>
 
-<script src="script.js?v=11"></script>
+<script src="script.js?v=12"></script>
 <script src="admin-loader.js?v=2"></script>
 </body>
 </html>
