@@ -432,9 +432,7 @@ function renderHome(root, home) {
   };
   setText('#hero-eyebrow', home.heroEyebrow);
   setText('#hero-title', home.heroTitle);
-  setText('#favorites-kicker', home.favoritesKicker);
   setText('#favorites-title', home.favoritesTitle);
-  setText('#favorites-copy', home.favoritesCopy);
   setText('#book-promo-kicker', home.bookPromoKicker);
   setText('#book-promo-heading', home.bookPromoHeading);
 }
