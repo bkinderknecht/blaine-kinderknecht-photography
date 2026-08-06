@@ -1,0 +1,336 @@
+<meta charset="utf-8">
+<title>Editing Your Website</title>
+
+<style>
+  :root {
+    --night: #0B0E10;
+    --night-2: #161C1F;
+    --paper: #F6F2EB;
+    --paper-2: #EFE9DE;
+    --ink: #101416;
+    --ink-soft: rgba(16, 20, 22, 0.68);
+    --hairline: rgba(246, 242, 235, 0.14);
+    --teal: #0E6E6E;
+    --teal-soft: #9CC9C4;
+    --bg: var(--night);
+    --surface: var(--night-2);
+    --text: var(--paper);
+    --text-soft: rgba(246, 242, 235, 0.64);
+    --accent: var(--teal-soft);
+    --rule: var(--hairline);
+    --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --font-body: "Archivo", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+
+  :root[data-theme="light"] {
+    --bg: var(--paper);
+    --surface: #FFFFFF;
+    --text: var(--ink);
+    --text-soft: var(--ink-soft);
+    --accent: var(--teal);
+    --rule: rgba(16, 20, 22, 0.12);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: var(--paper);
+      --surface: #FFFFFF;
+      --text: var(--ink);
+      --text-soft: var(--ink-soft);
+      --accent: var(--teal);
+      --rule: rgba(16, 20, 22, 0.12);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 700px; margin: 0 auto; padding: 56px 24px 96px; }
+
+  header.masthead { margin-bottom: 48px; }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+
+  .lede { color: var(--text-soft); font-size: 17px; max-width: 54ch; margin: 0; }
+  .lede b { color: var(--text); font-weight: 600; }
+
+  nav.toc {
+    margin: 36px 0 0;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+  }
+
+  nav.toc .toc-label {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-soft); font-weight: 700; margin-bottom: 10px; display: block;
+  }
+
+  nav.toc ul {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px;
+  }
+
+  nav.toc a { color: var(--text); text-decoration: none; font-size: 14.5px; border-bottom: 1px solid transparent; }
+  nav.toc a:hover { border-bottom-color: var(--accent); }
+  nav.toc a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  section.task {
+    margin-top: 44px; padding-top: 36px; border-top: 1px solid var(--rule); scroll-margin-top: 24px;
+  }
+  section.task:first-of-type { border-top: none; }
+
+  .task-label {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: var(--font-serif); font-weight: 400;
+    font-size: clamp(24px, 4vw, 32px); margin: 0 0 14px; letter-spacing: -0.01em; text-wrap: balance;
+  }
+
+  .task p { margin: 0 0 12px; }
+  .task p:last-child { margin-bottom: 0; }
+
+  .steps { margin: 16px 0 0; padding: 0; list-style: none; counter-reset: step; }
+  .steps li { counter-increment: step; position: relative; padding-left: 34px; margin-bottom: 12px; font-size: 15.5px; }
+  .steps li:last-child { margin-bottom: 0; }
+  .steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 1px;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--accent); color: var(--night);
+    font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; font-family: var(--font-body);
+  }
+  :root[data-theme="light"] .steps li::before { color: #fff; }
+  @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .steps li::before { color: #fff; } }
+
+  kbd, .ui {
+    font-family: var(--font-mono); font-size: 0.86em;
+    background: var(--rule); padding: 2px 7px; border-radius: 4px; color: var(--text);
+  }
+
+  .note { margin-top: 16px; padding: 14px 16px; background: var(--rule); border-radius: 6px; font-size: 14.5px; color: var(--text-soft); }
+  .note b { color: var(--text); }
+  .note.warn { background: rgba(156, 201, 196, 0.1); border: 1px solid rgba(156, 201, 196, 0.3); }
+
+  .example-list { margin: 14px 0; display: flex; flex-direction: column; gap: 8px; }
+  .example { padding: 10px 14px; border-radius: 6px; font-size: 14.5px; border-left: 3px solid; }
+  .example.good { background: rgba(156, 201, 196, 0.08); border-left-color: var(--accent); color: var(--text); }
+  .example.bad { background: rgba(232, 135, 122, 0.08); border-left-color: #E8877A; color: var(--text-soft); }
+
+  footer.sign-off { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--rule); color: var(--text-soft); font-size: 14px; }
+
+  a { color: var(--accent); }
+
+  @media (max-width: 520px) { nav.toc ul { grid-template-columns: 1fr; } }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="eyebrow">Blaine Kinderknecht Photography — Website Guide</span>
+    <h1>Editing your&nbsp;website</h1>
+    <p class="lede">You can change almost everything on the site yourself — no coding, nothing to install. This page walks through every task. <b>Bookmark it</b> next to your login page.</p>
+  </header>
+
+  <nav class="toc" aria-label="Jump to a task">
+    <span class="toc-label">Jump to</span>
+    <ul>
+      <li><a href="#login">Logging in</a></li>
+      <li><a href="#add-photos">Adding a photo</a></li>
+      <li><a href="#edit-delete">Editing &amp; deleting photos</a></li>
+      <li><a href="#select">Deleting several at once</a></li>
+      <li><a href="#hero">Your homepage hero photos</a></li>
+      <li><a href="#covers">Category cover photos</a></li>
+      <li><a href="#sections">Adding &amp; removing categories</a></li>
+      <li><a href="#reorder">Reordering photos</a></li>
+      <li><a href="#text">Page text &amp; bio</a></li>
+      <li><a href="#contact">Contact &amp; social links</a></li>
+      <li><a href="#writing">Writing for search</a></li>
+      <li><a href="#publish">When changes go live &amp; credits</a></li>
+    </ul>
+  </nav>
+
+  <section class="task" id="login">
+    <div class="task-label">Getting in</div>
+    <h2>Logging in</h2>
+    <p>Your login page isn't linked anywhere on the site on purpose — bookmark it now.</p>
+    <ol class="steps">
+      <li>Go to <a href="https://bkinderknecht.netlify.app/login.html" target="_blank" rel="noopener">bkinderknecht.netlify.app/login.html</a> and bookmark it in your browser.</li>
+      <li>Log in with <span class="ui">blainekinderknecht@gmail.com</span> and the password Jack set up for you.</li>
+      <li>You'll land on the homepage with a thin dark bar pinned to the bottom of the screen that says <span class="ui">Editing</span>, plus a round <span class="ui">+</span> button floating near it. That bar means you're logged in — the whole site now has edit controls layered on top of the normal page.</li>
+    </ol>
+    <div class="note">Click <span class="ui">Log out</span> on that bottom bar when you're done, especially on a shared computer. Nothing about how the site looks changes for anyone else, logged in or not — you're just the only one who sees the edit controls.</div>
+  </section>
+
+  <section class="task" id="add-photos">
+    <div class="task-label">The photo library</div>
+    <h2>Adding a photo</h2>
+    <p>Every photo on the site — no matter which category page it shows up on — gets added the same way.</p>
+    <ol class="steps">
+      <li>Click the round <span class="ui">+</span> button near the bottom bar.</li>
+      <li>Choose a photo from your computer or phone.</li>
+      <li>Write a caption (optional, but see the search section below for why it's worth doing), and pick which category it belongs to (Football, Basketball, Farm &amp; Country, etc.).</li>
+      <li>Click <span class="ui">Save</span>.</li>
+    </ol>
+    <div class="note">Every photo you upload is automatically resized for the web — no need to shrink anything yourself first.</div>
+  </section>
+
+  <section class="task" id="edit-delete">
+    <div class="task-label">The photo library</div>
+    <h2>Editing &amp; deleting one photo</h2>
+    <p>Hover over any photo, anywhere on the site, and two small controls appear on the tile itself.</p>
+    <ol class="steps">
+      <li><b>Edit:</b> click the photo's edit control to change its caption, category, or swap in a different image entirely.</li>
+      <li><b>Delete:</b> click the <span class="ui">×</span> on the tile to remove it. This can't be undone from the site — if you're not sure, ask Jack before deleting something you might want back.</li>
+    </ol>
+  </section>
+
+  <section class="task" id="select">
+    <div class="task-label">The photo library</div>
+    <h2>Deleting several photos at once</h2>
+    <ol class="steps">
+      <li>Click <span class="ui">Select</span> in the bottom bar.</li>
+      <li>Click each photo you want gone — they'll highlight as you go.</li>
+      <li>Click <span class="ui">Delete Selected</span>.</li>
+    </ol>
+    <div class="note">Deleting ten photos this way is one save; deleting them one at a time with the × is ten saves. See the credits section below for why that's worth doing.</div>
+  </section>
+
+  <section class="task" id="hero">
+    <div class="task-label">The homepage</div>
+    <h2>Your homepage hero photos</h2>
+    <p>The large background photo(s) behind your name at the very top of the site — the first thing anyone sees — are their own thing, separate from the category photos below.</p>
+    <ol class="steps">
+      <li>Hover over the hero area at the top of the homepage and click <span class="ui">Change hero photos</span>.</li>
+      <li>Pick up to 3 photos from your library. You can also adjust the framing on your portrait photo from the same panel.</li>
+      <li>Save.</li>
+    </ol>
+    <div class="note">The photo you pick has to already be uploaded to your library first — add it under the <span class="ui">+</span> button before you can choose it here.</div>
+  </section>
+
+  <section class="task" id="covers">
+    <div class="task-label">Category pages</div>
+    <h2>Category cover photos</h2>
+    <p>Each category (Football, Baseball, Senior Photos, etc.) has its own cover photo shown on the category grid and at the top of that category's page.</p>
+    <ol class="steps">
+      <li>Go to that category's page, or find its tile on the "What I shoot" grid on the homepage.</li>
+      <li>Click <span class="ui">Change cover photo</span> / <span class="ui">Cover photo</span>.</li>
+      <li>Choose a photo already in your library, or reset it to blank.</li>
+    </ol>
+  </section>
+
+  <section class="task" id="sections">
+    <div class="task-label">Category pages</div>
+    <h2>Adding &amp; removing categories</h2>
+    <ol class="steps">
+      <li><b>Add a category:</b> click <span class="ui">+ Add Section</span> on the "What I shoot" grid, and name it.</li>
+      <li><b>Remove a category:</b> click the <span class="ui">×</span> on its tile. Photos already filed under it don't get deleted — only the category itself goes away, so move or re-tag anything in it first if you don't want it orphaned.</li>
+      <li><b>Rename a category:</b> click directly into its name text on the grid or on its own page, edit it, then click <span class="ui">Save Section Names</span>.</li>
+    </ol>
+  </section>
+
+  <section class="task" id="reorder">
+    <div class="task-label">Layout</div>
+    <h2>Reordering photos</h2>
+    <p>Within a category page, click and drag any photo by its <span class="ui">↕</span> handle to a new spot. Works best on a trackpad.</p>
+    <div class="note warn"><b>Every drag is its own save.</b> Moving five photos around one at a time is five separate saves — figure out roughly where you want things before you start dragging, rather than nudging things back and forth repeatedly.</div>
+  </section>
+
+  <section class="task" id="text">
+    <div class="task-label">Wording</div>
+    <h2>Page text &amp; bio</h2>
+    <p>Your name, the hero tagline ("Western Kansas &amp; beyond"), your About bio, and the "Book a shoot" heading are all editable directly on the page:</p>
+    <ol class="steps">
+      <li>Click directly on any heading or paragraph.</li>
+      <li>Type your change.</li>
+      <li>A <span class="ui">Save Home Page</span> (or <span class="ui">Save About Page</span>) button appears once you've changed something — you can edit several pieces of text before clicking it once.</li>
+    </ol>
+    <p>Your bio can have more paragraphs than it starts with — click into the last line and add another when editing.</p>
+    <p>The booking page (<span class="ui">Book</span> in your nav) has its own editable copy and options, saved the same way via its own Save button.</p>
+  </section>
+
+  <section class="task" id="contact">
+    <div class="task-label">Contact info</div>
+    <h2>Email, phone, Instagram &amp; TikTok</h2>
+    <ol class="steps">
+      <li>Click <span class="ui">Settings</span> in the bottom bar.</li>
+      <li>Update any of: email, phone, Instagram link, TikTok link.</li>
+      <li>Save from inside that panel.</li>
+    </ol>
+    <div class="note">Leave anything blank and it just disappears from the site instead of showing up empty — no need to delete placeholder text, just don't fill it in.</div>
+  </section>
+
+  <section class="task" id="writing">
+    <div class="task-label">Getting found on Google</div>
+    <h2>Writing for search</h2>
+    <p>Nobody's going to search "photography" and find you — that word is way too competitive. But people searching for exactly what you shoot, in the area you shoot in, absolutely can. The trick isn't stuffing in keywords, it's being <i>specific</i> everywhere you write.</p>
+
+    <p><b>The words that actually matter to you:</b> your sport(s), "high school," and your area (Quinter, Western Kansas) — used the way you'd actually say them out loud, not crammed together.</p>
+
+    <div class="note"><b>Quick gut check before you publish anything:</b> if a stranger read only this one sentence, would they know what you shoot and roughly where? If not, that's the fix — not more words, just the right ones.</div>
+
+    <p><b>Photo captions — this is the one that matters most.</b> Every caption doubles as what Google "reads" for that image, so specific captions are genuinely the highest-impact thing you can do here, and they're the easiest.</p>
+    <div class="example-list">
+      <div class="example good">"Quinter vs. WaKeeney — Senior Night, pole vault"</div>
+      <div class="example good">"State track finals — 4x400 relay, final stretch"</div>
+      <div class="example bad">"Nice shot," "Test," "IMG_4821," or leaving it blank</div>
+    </div>
+    <p>Include what you know: the sport, the teams or schools (if it's public info, like a game result), and the setting or moment. You don't need all three every time — just don't leave it generic.</p>
+
+    <p><b>Your bio</b> already does a lot of this right — it names your area and how long you've been shooting. If you ever revise it, keep your area and what you shoot somewhere in the first couple sentences; that's the part search engines weigh heaviest.</p>
+
+    <div class="note warn"><b>One thing worth doing outside the website entirely:</b> a free Google Business Profile matters more for local searches like "Western Kansas sports photographer" than anything written on the site itself — genuinely the biggest lever for getting found locally. Ask Jack about this if it's not set up yet.</div>
+  </section>
+
+  <section class="task" id="publish">
+    <div class="task-label">Good to know</div>
+    <h2>When changes go live &amp; how credits work</h2>
+    <p>Every save takes up to about a minute to show up for other visitors — that's the site quietly rebuilding itself in the background, not a bug. You'll always see a confirmation message right after saving; if you don't see one, the change didn't go through and it's worth trying again.</p>
+
+    <p><b>Every save costs a "deploy credit" on the Netlify account — this is real money, not free.</b> As set up, the account is on Netlify's free plan, which is <b>about 20 saves a month</b>. A normal month of editing photos and text won't get close to that, but it's worth knowing the ceiling exists. The way to stay comfortably under it:</p>
+    <ol class="steps">
+      <li><b>Delete photos in batches</b> with <span class="ui">Select</span> → <span class="ui">Delete Selected</span> instead of one at a time.</li>
+      <li><b>Edit several pieces of text before hitting Save.</b> The save button saves everything you've changed on the page at once — no need to save after every single word.</li>
+      <li><b>Plan drag-reorders before you start.</b> Each drop is its own save (see above).</li>
+      <li><b>Don't save just to "check" something.</b> What you see while editing is already what the site will look like — the save only matters for other visitors.</li>
+    </ol>
+    <div class="note">If it ever runs low mid-month, Netlify will prompt to add credits or upgrade the plan — nothing on the live site breaks either way, new saves just pause until it tops up or the month rolls over. Text Jack if you want a recommendation on which option makes sense.</div>
+  </section>
+
+  <footer class="sign-off">
+    Questions or something not behaving as described here — text Jack.
+  </footer>
+
+</div>
