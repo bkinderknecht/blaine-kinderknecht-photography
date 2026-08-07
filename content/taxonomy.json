@@ -29,7 +29,8 @@
           "slug": "girls-basketball",
           "label": "Girls Basketball",
           "category": "girls-basketball",
-          "path": "sports/girls-basketball"
+          "path": "sports/girls-basketball",
+          "coverSlug": "girls-basketball-41"
         },
         {
           "slug": "volleyball",
