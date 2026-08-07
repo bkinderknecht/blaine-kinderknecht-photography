@@ -744,6 +744,13 @@ section {
   .favorites-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+@media (max-width: 540px) {
+  /* A 2-column grid leaves an odd-numbered last photo (e.g. 3 total)
+     stranded alone on the left with a big gap beside it — single
+     column avoids that at phone widths. */
+  .favorites-grid { grid-template-columns: 1fr; }
+}
+
 /* ---------- Category carousel (homepage) ----------
    Same .category-tile/.placeholder-tile markup as gallery.html's own
    category picker (both come from renderTileGrid in script.js), just
