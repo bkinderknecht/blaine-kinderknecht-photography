@@ -22,7 +22,8 @@
           "slug": "boys-basketball",
           "label": "Boys Basketball",
           "category": "boys-basketball",
-          "path": "sports/boys-basketball"
+          "path": "sports/boys-basketball",
+          "coverSlug": "boys-basketball-04"
         },
         {
           "slug": "girls-basketball",
