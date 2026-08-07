@@ -34,7 +34,8 @@
           "slug": "volleyball",
           "label": "Volleyball",
           "category": "volleyball",
-          "path": "sports/volleyball"
+          "path": "sports/volleyball",
+          "coverSlug": "volleyball-22"
         },
         {
           "slug": "track",

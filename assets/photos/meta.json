@@ -1498,7 +1498,9 @@
       "slug": "volleyball-22",
       "category": "volleyball",
       "caption": "",
-      "bentoSlot": ""
+      "bentoSlot": "",
+      "heroFocusX": 53,
+      "heroFocusY": 54
     },
     {
       "slug": "volleyball-25",
