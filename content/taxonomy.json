@@ -49,7 +49,8 @@
           "slug": "cross-country",
           "label": "Cross Country",
           "category": "cross-country",
-          "path": "sports/cross-country"
+          "path": "sports/cross-country",
+          "coverSlug": "cross-country-26"
         },
         {
           "slug": "baseball",
