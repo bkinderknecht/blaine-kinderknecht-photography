@@ -108,6 +108,11 @@
           "path": "beyond/farming"
         }
       ]
+    },
+    {
+      "slug": "college-sports",
+      "label": "College Sports",
+      "category": "college-sports"
     }
   ]
 }
