@@ -112,7 +112,9 @@
     {
       "slug": "college-sports",
       "label": "College Sports",
-      "category": "college-sports"
+      "category": "college-sports",
+      "path": "college-sports",
+      "coverSlug": "college-sports-mu5mprvh"
     }
   ]
 }

@@ -1718,7 +1718,9 @@
       "category": "college-sports",
       "caption": "",
       "bentoSlot": "",
-      "v": 1789655669302
+      "v": 1789655671354,
+      "heroFocusX": 50,
+      "heroFocusY": 50
     }
   ]
 }
