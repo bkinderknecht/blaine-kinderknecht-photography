@@ -1702,14 +1702,16 @@
       "category": "college-sports",
       "caption": "",
       "bentoSlot": "",
-      "v": 1789654977947
+      "v": 1789654980195
     },
     {
       "slug": "college-sports-mu5mdq2l",
       "category": "college-sports",
       "caption": "",
       "bentoSlot": "",
-      "v": 1789655003528
+      "v": 1789655005950,
+      "focusX": 57,
+      "focusY": 26
     }
   ]
 }
